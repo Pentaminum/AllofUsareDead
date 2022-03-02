@@ -1,9 +1,11 @@
 package main.java.entity;
 
+import main.java.object.*;
+
 import java.awt.*;
 import java.awt.image.*;
 
-public class Entity extends Location{
+public class Entity extends Location {
     public int health;
     public int speed;
 
@@ -13,5 +15,6 @@ public class Entity extends Location{
     public int spriteCounter=0;
     public int spriteNum=1;
     public Rectangle solidArea;
+    public int solidAreaDefaultX,solidAreaDefaultY;
     public boolean collisionOn=false;
 }

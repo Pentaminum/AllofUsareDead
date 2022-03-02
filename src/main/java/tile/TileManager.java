@@ -21,11 +21,13 @@ public class TileManager {
     public void getTileImage(){
         try{
             tile[0]=new Tile();
-            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/tiles/floor.png"));
-
+            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/tiles/floor_1.png"));
             tile[1]=new Tile();
-            tile[1].image= ImageIO.read(getClass().getResourceAsStream("/tiles/wall.png"));
-            tile[1].collision=true;
+            tile[1].image= ImageIO.read(getClass().getResourceAsStream("/tiles/floor_2.png"));
+
+            tile[2]=new Tile();
+            tile[2].image= ImageIO.read(getClass().getResourceAsStream("/tiles/wall.png"));
+            tile[2].collision=true;
 
         }catch (IOException e){
             e.printStackTrace();

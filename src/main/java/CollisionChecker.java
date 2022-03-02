@@ -55,4 +55,68 @@ public class CollisionChecker {
             }
         }
     }
+    public int checkObject(Entity entity,boolean player){
+        int index=999;
+
+        for(int i=0;i<gamePanel.obj.length;i++){
+            if(gamePanel.obj[i]!=null){
+                entity.solidArea.x=entity.x+entity.solidArea.x;
+                entity.solidArea.y=entity.y+entity.solidArea.y;
+                gamePanel.obj[i].solidArea.x=gamePanel.obj[i].x+gamePanel.obj[i].solidArea.x;
+                gamePanel.obj[i].solidArea.y=gamePanel.obj[i].y+gamePanel.obj[i].solidArea.y;
+                switch (entity.direction) {
+                    case "up" -> {
+                        entity.solidArea.y -= entity.speed;
+                        if (entity.solidArea.intersects(gamePanel.obj[i].solidArea)) {
+                            if(gamePanel.obj[i].collision){
+                                entity.collisionOn=true;
+                            }
+                            if(player){
+                                index=i;
+                            }
+                        }
+                    }
+                    case "down" -> {
+                        entity.solidArea.y += entity.speed;
+                        if (entity.solidArea.intersects(gamePanel.obj[i].solidArea)) {
+                            if(gamePanel.obj[i].collision){
+                                entity.collisionOn=true;
+                            }
+                            if(player){
+                                index=i;
+                            }
+                        }
+                    }
+                    case "left" -> {
+                        entity.solidArea.x -= entity.speed;
+                        if (entity.solidArea.intersects(gamePanel.obj[i].solidArea)) {
+                            if(gamePanel.obj[i].collision){
+                                entity.collisionOn=true;
+                            }
+                            if(player){
+                                index=i;
+                            }
+                        }
+                    }
+                    case "right" -> {
+                        entity.solidArea.x += entity.speed;
+                        if (entity.solidArea.intersects(gamePanel.obj[i].solidArea)) {
+                            if(gamePanel.obj[i].collision){
+                                entity.collisionOn=true;
+                            }
+                            if(player){
+                                index=i;
+                            }
+                        }
+                    }
+                }
+                entity.solidArea.x=entity.solidAreaDefaultX;
+                entity.solidArea.y=entity.solidAreaDefaultY;
+                gamePanel.obj[i].solidArea.x=gamePanel.obj[i].solidAreaDefaultX;
+                gamePanel.obj[i].solidArea.y=gamePanel.obj[i].solidAreaDefaultY;
+            }
+        }
+
+        return index;
+    }
 }

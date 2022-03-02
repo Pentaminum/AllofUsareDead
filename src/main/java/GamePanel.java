@@ -1,15 +1,18 @@
 package main.java;
 
 import main.java.entity.*;
+import main.java.object.*;
 import main.java.tile.*;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
-    //screen setting
+    //Screen setting
     final int originalTitleSize = 16;//16 x 16 tile
     final int scale = 3;
+
+    //world setting
     public final int tileSize = originalTitleSize * scale;//48 x 48 tile
     public final int maxScreenCol = 20;
     public final int maxScreenRow = 16;
@@ -19,11 +22,20 @@ public class GamePanel extends JPanel implements Runnable {
     //FPS
     int FPS = 60;
 
+    //System
     TileManager tileManager=new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
-    Thread gameThread;
+    Sound music =new Sound();
+    Sound soundEffect=new Sound();
     public CollisionChecker collisionChecker=new CollisionChecker(this);
+    public AssetSetter assetSetter=new AssetSetter(this);
+    public UI ui=new UI(this);
+    Thread gameThread;
+
+    //Entity and object
     Player player=new Player(this,keyHandler);
+    public Location[] obj =new Location[10];
+
 
 
     public GamePanel() {
@@ -32,6 +44,11 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
+    }
+
+    public void setupGameObject(){
+        assetSetter.setObject();
+        playMusic(0);
     }
 
     public void startGameThread() {
@@ -70,8 +87,38 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
+
+        //Tile
         tileManager.draw(g2D);
+
+        //Object
+        for (Location location : obj) {
+            if (location != null) {
+                location.draw(g2D, this);
+            }
+        }
+
+        //player
         player.draw(g2D);
+
+        //UI
+        ui.draw(g2D);
+
         g2D.dispose();
+    }
+
+    public void playMusic(int i){
+        music.setFile(i);
+        music.play();
+        music.loop();
+    }
+
+    public void stopMusic(){
+        music.stop();
+    }
+
+    public void playSoundEffect(int i){
+        soundEffect.setFile(i);
+        soundEffect.play();
     }
 }

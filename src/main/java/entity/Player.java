@@ -9,12 +9,16 @@ import java.awt.image.*;
 public class Player extends Entity {
     GamePanel gamePanel;
     KeyHandler keyHandler;
+    public int hasRegularReward=0;
+    public int hasSpecialReward=0;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
 
         solidArea = new Rectangle(8, 16, 32, 32);
+        solidAreaDefaultX=solidArea.x;
+        solidAreaDefaultY=solidArea.y;
 
         setDefaultValue();
         getPlayerImage();
@@ -55,9 +59,15 @@ public class Player extends Entity {
                 direction = "right";
             }
 
+            //check tile collision
             collisionOn = false;
             gamePanel.collisionChecker.checkTile(this);
 
+            //check object collision
+            int objectIndex=gamePanel.collisionChecker.checkObject(this,true);
+            pickUpObject(objectIndex);
+
+            //if collision is false player can move
             if (!collisionOn) {
                 switch (direction) {
                     case "up" -> y -= speed;
@@ -68,7 +78,7 @@ public class Player extends Entity {
             }
 
             spriteCounter++;
-            if (spriteCounter > 20) {
+            if (spriteCounter > 10) {
                 if (spriteNum == 1) {
                     spriteNum = 2;
                 } else {
@@ -79,9 +89,25 @@ public class Player extends Entity {
         }
     }
 
+    public void pickUpObject(int i){
+        if(i!=999){
+            String objectName=gamePanel.obj[i].name;
+            switch (objectName) {
+                case "Regular Reward" -> {
+                    hasRegularReward++;
+                    gamePanel.obj[i] = null;
+                    gamePanel.playSoundEffect(1);
+                }
+                case "Special Reward" -> {
+                    hasSpecialReward++;
+                    gamePanel.obj[i] = null;
+                    gamePanel.playSoundEffect(2);
+                }
+            }
+        }
+    }
+
     public void draw(Graphics2D g2D) {
-        //g2D.setColor(Color.WHITE);
-        //g2D.fillRect(x, y, gamePanel.tileSize, gamePanel.tileSize);
         BufferedImage image = null;
         switch (direction) {
             case "up" -> {
