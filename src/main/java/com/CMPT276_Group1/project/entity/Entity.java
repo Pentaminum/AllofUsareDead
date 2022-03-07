@@ -19,4 +19,5 @@ public class Entity extends ObjectSuper {
     public Rectangle solidArea;
     public int solidAreaDefaultX,solidAreaDefaultY;
     public boolean collisionOn=false;
+
 }

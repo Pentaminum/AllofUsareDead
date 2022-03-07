@@ -12,9 +12,9 @@ public class UI {
     Font arial_40, arial_80B;
     BufferedImage studentImage;
     BufferedImage heart_full,heart_half,heart_blank;
-    public boolean gameFinished = false;
     private Graphics2D graphic2D;
     public int commandNum=0;
+    public int score=0;
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -42,6 +42,11 @@ public class UI {
         //Play state{
         if(gamePanel.gameState==gamePanel.playState){
             drawPlayerLife();
+            if(gamePanel.player.life==0){
+                gamePanel.gameState=gamePanel.finishState;
+                gamePanel.stopMusic();
+                gamePanel.playSoundEffect(5);
+            }
         }
 
         //Pause state
@@ -50,43 +55,10 @@ public class UI {
             drawPauseScreen();
         }
 
-        /*if (gamePanel.gameState == gamePanel.titleState) {
-            drawTitleScreen();
-        } else {
-            if (gameFinished) {
-                gamePanel.stopMusic();
-                graphics2D.setFont(arial_40);
-                graphics2D.setColor(Color.WHITE);
-                String text;
-                int textlength;
-                text = "You and your friends survived!";
-                textlength = (int) graphics2D.getFontMetrics().getStringBounds(text, graphics2D).getWidth();
-                int x = gamePanel.screenWidth / 2 - textlength / 2;
-                int y = gamePanel.screenHeight / 2 - (gamePanel.tileSize * 3);
-                graphics2D.drawString(text, x, y);
-
-                graphics2D.setFont(arial_80B);
-                graphics2D.setColor(Color.YELLOW);
-
-                text = "Congratulations!";
-                textlength = (int) graphics2D.getFontMetrics().getStringBounds(text, graphics2D).getWidth();
-                x = gamePanel.screenWidth / 2 - textlength / 2;
-                y = gamePanel.screenHeight / 2 + (gamePanel.tileSize * 2);
-                graphics2D.drawString(text, x, y);
-                gamePanel.gameThread = null;
-            } else {
-                graphics2D.setFont(arial_40);
-                graphics2D.setColor(Color.WHITE);
-                graphics2D.drawImage(studentImage, 0, 0, gamePanel.tileSize, gamePanel.tileSize, null);
-                graphics2D.drawString("x " + gamePanel.player.hasRegularReward, 50, 35);
-                if (gamePanel.gameState == gamePanel.playState) {
-
-                }
-                if (gamePanel.gameState == gamePanel.pauseState) {
-                    drawPauseScreen();
-                }
-            }
-        }*/
+        //Finish state
+        if(gamePanel.gameState==gamePanel.finishState){
+            drawFinishScreen();
+        }
     }
 
     public void drawTitleScreen(){
@@ -185,9 +157,60 @@ public class UI {
         graphic2D.drawString(text, x, y);
     }
 
+    public void drawFinishScreen(){
+        BufferedImage image1=null,image2=null;
+        try{
+            image1= ImageIO.read(getClass().getResourceAsStream("/symbol/enterSymbol.png"));
+            image2= ImageIO.read(getClass().getResourceAsStream("/background/title_background.png"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        graphic2D.setColor(new Color(0,0,0));
+        graphic2D.drawImage(image2,0,0,gamePanel.screenWidth,gamePanel.screenHeight,null);
+
+        //Title name
+        graphic2D.setFont(graphic2D.getFont().deriveFont(Font.BOLD,96F));
+        String text="All of Us are Dead";
+        int x=getXForCenterText(text);
+        int y=gamePanel.tileSize*3;
+
+        //Shadow
+        graphic2D.setColor(Color.gray);
+        graphic2D.drawString(text,x+5,y+5);
+        //Main color
+        graphic2D.setColor(Color.white);
+        graphic2D.drawString(text,x,y);
+
+        //Menu
+        graphic2D.setFont(graphic2D.getFont().deriveFont(Font.BOLD,48F));
+
+        if(gamePanel.player.life==0){
+            text="Defeat";
+            x=getXForCenterText(text);
+            y+=gamePanel.tileSize*2;
+            graphic2D.drawString(text,x,y);
+            score=0;
+        }else{
+            text="Victory";
+            x=getXForCenterText(text);
+            y+=gamePanel.tileSize*2;
+            graphic2D.drawString(text,x,y);
+        }
+        text="score: "+(gamePanel.player.life*100+gamePanel.player.hasRegularReward*200+gamePanel.player.hasSpecialReward*500);
+        x=getXForCenterText(text);
+        y+=gamePanel.tileSize*2;
+        graphic2D.drawString(text,x,y);
+
+        y+=gamePanel.tileSize;
+        graphic2D.drawImage(image1,gamePanel.tileSize*8,y,gamePanel.tileSize*4,(gamePanel.tileSize*3),null);
+    }
+
     public int getXForCenterText(String text) {
         int length = (int) graphic2D.getFontMetrics().getStringBounds(text, graphic2D).getWidth();
         return gamePanel.screenWidth / 2 - length / 2;
 
     }
+
+
 }

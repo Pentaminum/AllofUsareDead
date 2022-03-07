@@ -12,6 +12,7 @@ public class Sound {
         soundURL[2]=getClass().getResource("/sound/pick_up_special_reward.wav");
         soundURL[3]=getClass().getResource("/sound/fanfare.wav");
         soundURL[4]=getClass().getResource("/sound/title_screen_music.wav");
+        soundURL[5]=getClass().getResource("/sound/defeated.wav");
     }
     public void setFile(int i){
         try{

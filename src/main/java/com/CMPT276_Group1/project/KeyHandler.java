@@ -72,6 +72,13 @@ public class KeyHandler implements KeyListener {
                 gamePanel.gameState=gamePanel.playState;
             }
         }
+
+        //Finish state
+        if(gamePanel.gameState==gamePanel.finishState){
+            if(code==KeyEvent.VK_ENTER){
+                gamePanel.gameState=gamePanel.titleState;
+            }
+        }
         //Debug
         if(code==KeyEvent.VK_T){
             checkDrawTime= !checkDrawTime;

@@ -122,9 +122,9 @@ public class Player extends Entity {
                 }
                 case "Exit" -> {
                     if (hasRegularReward == 1) {
-                        gamePanel.ui.gameFinished = true;
                         gamePanel.stopMusic();
                         gamePanel.playSoundEffect(3);
+                        gamePanel.gameState=gamePanel.finishState;
                     }
                 }
             }
