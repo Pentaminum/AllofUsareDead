@@ -196,8 +196,9 @@ public class UI {
             x=getXForCenterText(text);
             y+=gamePanel.tileSize*2;
             graphic2D.drawString(text,x,y);
+            score=(gamePanel.player.life*100+gamePanel.player.hasRegularReward*200+gamePanel.player.hasSpecialReward*500);
         }
-        text="score: "+(gamePanel.player.life*100+gamePanel.player.hasRegularReward*200+gamePanel.player.hasSpecialReward*500);
+        text="score: "+score;
         x=getXForCenterText(text);
         y+=gamePanel.tileSize*2;
         graphic2D.drawString(text,x,y);

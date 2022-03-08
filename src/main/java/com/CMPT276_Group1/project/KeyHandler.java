@@ -1,5 +1,7 @@
 package com.CMPT276_Group1.project;
 
+import com.CMPT276_Group1.project.entity.*;
+
 import java.awt.event.*;
 
 public class KeyHandler implements KeyListener {
@@ -76,7 +78,8 @@ public class KeyHandler implements KeyListener {
         //Finish state
         if(gamePanel.gameState==gamePanel.finishState){
             if(code==KeyEvent.VK_ENTER){
-                gamePanel.gameState=gamePanel.titleState;
+                gamePanel.setupGameObject();
+                gamePanel.player=new Player(gamePanel, gamePanel.keyHandler);
             }
         }
         //Debug
