@@ -1,0 +1,4 @@
+1. implement zombie and its algorithm(check player class for idea)
+    1.1 create zombie sprite
+2. make maze
+3. documentation & Java doc
