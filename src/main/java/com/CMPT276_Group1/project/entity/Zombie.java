@@ -45,10 +45,10 @@ public class Zombie extends Entity{
         down2 = setUp("zombie_down_2");
         left1 = setUp("zombie_left_1");
         left2 = setUp("zombie_left_2");
-        down1 = setUp("zombie_down_1");
-        down1 = setUp("zombie_down_1");
-        down1 = setUp("zombie_down_1");
-        down1 = setUp("zombie_down_1");
+        right1 = setUp("zombie_right_1");
+        right2 = setUp("zombie_right_2");
+        up1 = setUp("zombie_up_1");
+        up2 = setUp("zombie_up_2");
     }
 
     public void setAction(){
