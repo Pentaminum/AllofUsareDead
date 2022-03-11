@@ -28,12 +28,12 @@ public class KeyHandler implements KeyListener {
             if(code==KeyEvent.VK_W){
                 gamePanel.ui.commandNum--;
                 if(gamePanel.ui.commandNum<0){
-                    gamePanel.ui.commandNum=2;
+                    gamePanel.ui.commandNum=1;
                 }
             }
             if(code==KeyEvent.VK_S){
                 gamePanel.ui.commandNum++;
-                if(gamePanel.ui.commandNum>2){
+                if(gamePanel.ui.commandNum>1){
                     gamePanel.ui.commandNum=0;
                 }
             }
@@ -44,9 +44,6 @@ public class KeyHandler implements KeyListener {
                     gamePanel.playMusic(0);
                 }
                 if(gamePanel.ui.commandNum==1){
-                    //load game
-                }
-                if(gamePanel.ui.commandNum==2){
                     System.exit(0);
                 }
             }

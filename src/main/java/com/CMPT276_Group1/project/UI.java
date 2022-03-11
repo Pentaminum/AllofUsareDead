@@ -102,20 +102,11 @@ public class UI {
             graphic2D.drawImage(image1,x+(int) graphic2D.getFontMetrics().getStringBounds(text, graphic2D).getWidth(),
                     y-gamePanel.tileSize,gamePanel.tileSize*2,(int)(gamePanel.tileSize*1.5),null);
         }
-
-        text="Load Game";
-        x=getXForCenterText(text);
-        y+=gamePanel.tileSize*1.5;
-        graphic2D.drawString(text,x,y);
-        if(commandNum==1){
-            graphic2D.drawImage(image1,x+(int) graphic2D.getFontMetrics().getStringBounds(text, graphic2D).getWidth(),
-                    y-gamePanel.tileSize,gamePanel.tileSize*2,(int)(gamePanel.tileSize*1.5),null);
-        }
         text="Quit";
         x=getXForCenterText(text);
-        y+=gamePanel.tileSize*1.5;
+        y+=gamePanel.tileSize*2;
         graphic2D.drawString(text,x,y);
-        if(commandNum==2){
+        if(commandNum==1){
             graphic2D.drawImage(image1,x+(int) graphic2D.getFontMetrics().getStringBounds(text, graphic2D).getWidth(),
                     y-gamePanel.tileSize,gamePanel.tileSize*2,(int)(gamePanel.tileSize*1.5),null);
         }
