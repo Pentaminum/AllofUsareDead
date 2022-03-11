@@ -13,6 +13,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int scale = 3;
 
     //world setting
+    //changed to non-static
     public final int tileSize = originalTitleSize * scale;//48 x 48 tile
     public final int maxScreenCol = 20;
     public final int maxScreenRow = 16;
@@ -36,6 +37,8 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyHandler);
     public ObjectSuper[] obj = new ObjectSuper[10];
     public Trap trap=new Trap(this);
+    //number of zombies we can display at the same time
+    public Entity zombie[]=new Entity[10];
 
     //Game state
     public int gameState;
