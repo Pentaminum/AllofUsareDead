@@ -4,6 +4,7 @@ import com.CMPT276_Group1.project.GamePanel;
 import com.CMPT276_Group1.project.UtilityTool;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
@@ -18,10 +19,7 @@ public class Zombie extends Entity{
         maxLife = 1;
         life = maxLife;
 
-        solidArea.x=3;
-        solidArea.y=15;
-        solidArea.width=40;
-        solidArea.height=33;
+        solidArea = new Rectangle(8, 16, 32, 32);
         solidAreaDefaultX=solidArea.x;
         solidAreaDefaultY=solidArea.y;
 
@@ -69,6 +67,30 @@ public class Zombie extends Entity{
                 direction="right";
             }
             spriteCounter=0;
+        }
+    }
+
+    public void update(){
+        setAction();
+        collisionOn=false;
+
+        if (!collisionOn) {
+            switch (direction) {
+                case "up" -> y -= speed;
+                case "down" -> y += speed;
+                case "left" -> x -= speed;
+                case "right" -> x += speed;
+            }
+        }
+
+        spriteCounter++;
+        if (spriteCounter > 10) {
+            if (spriteNum == 1) {
+                spriteNum = 2;
+            } else {
+                spriteNum = 1;
+            }
+            spriteCounter = 0;
         }
     }
 }
