@@ -1,5 +1,4 @@
-1. implement zombie and its algorithm(check player class for idea)
+1. implement zombie algorithm
 2. reconstruct maze and object(add a few more special/regular reward)
-3. implement attack(special reward attack zombie/zombie attack player)
-4. documentation & Java doc
-5. report
+3. documentation & Java doc
+4. report
