@@ -26,6 +26,19 @@ public class Zombie extends Entity{
         getImage();
     }
 
+    public void chase(){
+        int speedX = gamePanel.player.x-x;
+        int speedY = gamePanel.player.y-y;
+        int maxSpeed;
+        maxSpeed = speed / 2;
+        if(speedX > maxSpeed) speedX = maxSpeed;
+        if(speedX < -maxSpeed) speedX = -maxSpeed;
+        if(speedY > maxSpeed) speedY = maxSpeed;
+        if(speedY < -maxSpeed) speedY = -maxSpeed;
+        x=x+speedX;
+        y=y+speedY;
+    }
+
     public BufferedImage setUp(String imageName) {
         UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
@@ -51,6 +64,7 @@ public class Zombie extends Entity{
 
     public void update() {
         setAction();
+        chase();
         //check tile collision
         collisionOn = false;
         gamePanel.collisionChecker.checkTile(this);
