@@ -134,7 +134,7 @@ public class Player extends Entity {
                     gamePanel.playSoundEffect(2);
                 }
                 case "Exit" -> {
-                    if (hasRegularReward == 1) {
+                    if (hasRegularReward == 3) {
                         gamePanel.stopMusic();
                         gamePanel.playSoundEffect(3);
                         gamePanel.gameState=gamePanel.finishState;
