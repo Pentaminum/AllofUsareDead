@@ -1,5 +1,6 @@
 package com.CMPT276_Group1.project.entity;
 
+import com.CMPT276_Group1.project.GamePanel;
 import com.CMPT276_Group1.project.object.*;
 
 import java.awt.*;
@@ -19,5 +20,4 @@ public class Entity extends ObjectSuper {
     public Rectangle solidArea;
     public int solidAreaDefaultX,solidAreaDefaultY;
     public boolean collisionOn=false;
-
 }

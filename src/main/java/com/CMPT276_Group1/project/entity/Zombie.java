@@ -70,18 +70,59 @@ public class Zombie extends Entity{
         }
     }
 
+    public void draw(Graphics2D g2D) {
+        BufferedImage image = null;
+        switch (direction) {
+            case "up" -> {
+                if (spriteNum == 1) {
+                    image = up1;
+                }
+                if (spriteNum == 2) {
+                    image = up2;
+                }
+            }
+            case "down" -> {
+                if (spriteNum == 1) {
+                    image = down1;
+                }
+                if (spriteNum == 2) {
+                    image = down2;
+                }
+            }
+            case "left" -> {
+                if (spriteNum == 1) {
+                    image = left1;
+                }
+                if (spriteNum == 2) {
+                    image = left2;
+                }
+            }
+            case "right" -> {
+                if (spriteNum == 1) {
+                    image = right1;
+                }
+                if (spriteNum == 2) {
+                    image = right2;
+                }
+            }
+        }
+        g2D.drawImage(image, x, y, null);
+    }
+
     public void update(){
         setAction();
-        collisionOn=false;
+        /* collisionOn=false;
+        gamePanel.collisionChecker.checkTile(this);
 
-        if (!collisionOn) {
+        //check object collision
+        int objectIndex = gamePanel.collisionChecker.checkObject(this, true);
+        //if (!collisionOn) {
             switch (direction) {
                 case "up" -> y -= speed;
                 case "down" -> y += speed;
                 case "left" -> x -= speed;
                 case "right" -> x += speed;
             }
-        }
 
         spriteCounter++;
         if (spriteCounter > 10) {
@@ -91,6 +132,6 @@ public class Zombie extends Entity{
                 spriteNum = 1;
             }
             spriteCounter = 0;
-        }
+        }*/
     }
 }

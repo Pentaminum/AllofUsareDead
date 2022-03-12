@@ -13,7 +13,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int scale = 3;
 
     //world setting
-    //changed to non-static
+    //non-static
     public final int tileSize = originalTitleSize * scale;//48 x 48 tile
     public final int maxScreenCol = 20;
     public final int maxScreenRow = 16;
@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
     public ObjectSuper[] obj = new ObjectSuper[10];
     public Trap trap=new Trap(this);
     //number of zombies we can display at the same time
-    public Entity zombie[]=new Entity[10];
+    public Zombie zombies[]=new Zombie[10];
 
     //Game state
     public int gameState;
@@ -58,6 +58,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGameObject() {
         assetSetter.setObject();
         assetSetter.setTrap();
+        assetSetter.setZombie();
         playMusic(4);
         gameState = titleState;
     }
@@ -94,9 +95,13 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
         if (gameState == playState) {
             player.update();
-        } else if (gameState == pauseState) {
-
-        }
+            // zombie npc
+            for(int i=0;i<zombies.length;i++){
+                if(zombies[i]!=null){
+                    zombies[i].update();
+                }
+            }
+        } else if (gameState == pauseState) {}
     }
 
     public void paintComponent(Graphics g) {
@@ -120,6 +125,14 @@ public class GamePanel extends JPanel implements Runnable {
             for (ObjectSuper objectSuper : obj) {
                 if (objectSuper != null) {
                     objectSuper.draw(g2D, this);
+                }
+            }
+
+            //Zombie
+            for (Zombie zombie : zombies) {
+                if (zombie != null) {
+                    //zombie.draw(g2D, this);
+                    zombie.draw(g2D);
                 }
             }
 
