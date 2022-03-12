@@ -12,6 +12,9 @@ public class Entity extends ObjectSuper {
     public int life;
     public int speed;
 
+    public boolean invincible=false;
+    public int invincibleCounter=0;
+
     public BufferedImage up1,up2,down1,down2,left1,left2,right1,right2;
     public String direction;
 

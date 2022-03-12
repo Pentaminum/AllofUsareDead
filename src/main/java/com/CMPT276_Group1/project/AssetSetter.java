@@ -31,13 +31,11 @@ public class AssetSetter {
         gamePanel.zombies[0]=new Zombie(gamePanel);
         gamePanel.zombies[0].x=gamePanel.tileSize*5;
         gamePanel.zombies[0].y=gamePanel.tileSize*10;
-        gamePanel.zombies[0].speed=2;
-        gamePanel.zombies[0].direction="left";
+        gamePanel.zombies[0].direction="down";
 
         gamePanel.zombies[1]=new Zombie(gamePanel);
-        gamePanel.zombies[1].x=gamePanel.tileSize*6;
-        gamePanel.zombies[1].y=gamePanel.tileSize*12;
-        gamePanel.zombies[1].speed=2;
-        gamePanel.zombies[0].direction="down";
+        gamePanel.zombies[1].x=gamePanel.tileSize*5;
+        gamePanel.zombies[1].y=gamePanel.tileSize*11;
+        gamePanel.zombies[1].direction="down";
     }
 }

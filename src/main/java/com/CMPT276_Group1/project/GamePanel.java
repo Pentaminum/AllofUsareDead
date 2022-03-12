@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
     public ObjectSuper[] obj = new ObjectSuper[10];
     public Trap trap=new Trap(this);
     //number of zombies we can display at the same time
-    public Zombie zombies[]=new Zombie[10];
+    public Zombie[] zombies =new Zombie[10];
 
     //Game state
     public int gameState;
@@ -96,9 +96,9 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == playState) {
             player.update();
             // zombie npc
-            for(int i=0;i<zombies.length;i++){
-                if(zombies[i]!=null){
-                    zombies[i].update();
+            for (Zombie zombie : zombies) {
+                if (zombie != null) {
+                    zombie.update();
                 }
             }
         } else if (gameState == pauseState) {}
@@ -115,9 +115,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         //Title screen
-        if (gameState == titleState||gameState==finishState) {
-            ui.draw(g2D);
-        } else {
+        if (gameState != titleState && gameState != finishState) {
             //Tile
             tileManager.draw(g2D);
 
@@ -128,6 +126,14 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
 
+
+
+            //Trap
+            trap.draw(g2D, this);
+
+            //player
+            player.draw(g2D);
+
             //Zombie
             for (Zombie zombie : zombies) {
                 if (zombie != null) {
@@ -136,15 +142,9 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
 
-            //Trap
-            trap.draw(g2D,this);
-
-            //player
-            player.draw(g2D);
-
             //UI
-            ui.draw(g2D);
         }
+        ui.draw(g2D);
 
         //Debug
         if (keyHandler.checkDrawTime) {

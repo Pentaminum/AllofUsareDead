@@ -62,6 +62,7 @@ public class Player extends Entity {
     }
 
     public void update() {
+
         if (keyHandler.downPressed || keyHandler.upPressed || keyHandler.leftPressed || keyHandler.rightPressed) {
             if (keyHandler.upPressed) {
                 direction = "up";
@@ -84,6 +85,10 @@ public class Player extends Entity {
             //check trap
             gamePanel.trap.checkEvent();
 
+            //check zombie
+            int monsterIndex=gamePanel.collisionChecker.checkZombie(this,gamePanel.zombies);
+            contactZombie(monsterIndex);
+
             //if collision is false player can move
             if (!collisionOn) {
                 switch (direction) {
@@ -102,6 +107,14 @@ public class Player extends Entity {
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
+            }
+        }
+
+        if(invincible){
+            invincibleCounter++;
+            if(invincibleCounter>60){
+                invincible=false;
+                invincibleCounter=0;
             }
         }
     }
@@ -128,6 +141,22 @@ public class Player extends Entity {
                     }
                 }
             }
+        }
+    }
+
+    public void contactZombie(int i){
+        if(i!=999){
+            if(hasSpecialReward==0){
+                if(!invincible){
+                    life-=1;
+                    invincible=true;
+                }
+            }else{
+                hasSpecialReward--;
+                gamePanel.zombies[i]=null;
+            }
+
+
         }
     }
 
@@ -167,6 +196,10 @@ public class Player extends Entity {
                 }
             }
         }
+        if(invincible){
+            g2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,0.3f));
+        }
         g2D.drawImage(image, x, y, null);
+        g2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1f));
     }
 }

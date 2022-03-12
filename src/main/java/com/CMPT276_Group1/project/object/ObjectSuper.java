@@ -5,6 +5,9 @@ import com.CMPT276_Group1.project.*;
 import java.awt.*;
 import java.awt.image.*;
 
+/**
+ *
+ */
 public class ObjectSuper {
     public BufferedImage image,image2,image3;
     public String name;
