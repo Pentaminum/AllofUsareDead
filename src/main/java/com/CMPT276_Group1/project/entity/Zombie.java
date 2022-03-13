@@ -26,6 +26,19 @@ public class Zombie extends Entity{
         getImage();
     }
 
+    public void chase(){
+        int speedX = gamePanel.player.x-x;
+        int speedY = gamePanel.player.y-y;
+        int maxSpeed;
+        maxSpeed = speed / 2;
+        if(speedX > maxSpeed) speedX = maxSpeed;
+        if(speedX < -maxSpeed) speedX = -maxSpeed;
+        if(speedY > maxSpeed) speedY = maxSpeed;
+        if(speedY < -maxSpeed) speedY = -maxSpeed;
+        x=x+speedX;
+        y=y+speedY;
+    }
+
     public BufferedImage setUp(String imageName) {
         UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
@@ -51,6 +64,7 @@ public class Zombie extends Entity{
 
     public void update() {
         setAction();
+        //chase();
         //check tile collision
         collisionOn = false;
         gamePanel.collisionChecker.checkTile(this);
@@ -62,8 +76,8 @@ public class Zombie extends Entity{
         gamePanel.collisionChecker.checkZombie(this, gamePanel.zombies);
 
         //check player collision
-        gamePanel.collisionChecker.checkPlayer(this);
-
+        boolean attack=gamePanel.collisionChecker.checkPlayer(this);
+        contactPlayer(attack,this);
 
         if (!collisionOn) {
             switch (direction) {
@@ -99,6 +113,24 @@ public class Zombie extends Entity{
                 spriteNum = 1;
             }
             spriteCounter=0;
+        }
+    }
+
+    public void contactPlayer(boolean isPlayer,Entity entity){
+        if(isPlayer){
+            if(gamePanel.player.hasSpecialReward==0){
+                if(!gamePanel.player.invincible){
+                    gamePanel.player.life-=1;
+                    gamePanel.player.invincible=true;
+                }
+            }else{
+                gamePanel.player.hasSpecialReward--;
+                for(int i=0;i<gamePanel.zombies.length;i++){
+                    if(gamePanel.zombies[i]==entity){
+                        gamePanel.zombies[i]=null;
+                    }
+                }
+            }
         }
     }
 
