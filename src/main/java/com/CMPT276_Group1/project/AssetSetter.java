@@ -62,5 +62,10 @@ public class AssetSetter {
         gamePanel.zombies[1].x=8*gamePanel.tileSize;
         gamePanel.zombies[1].y=7*gamePanel.tileSize;
         gamePanel.zombies[1].direction="down";
+
+        gamePanel.zombies[2]=new Zombie(gamePanel);
+        gamePanel.zombies[2].x=gamePanel.tileSize*17;
+        gamePanel.zombies[2].y=gamePanel.tileSize*12;
+        gamePanel.zombies[2].direction="down";
     }
 }
