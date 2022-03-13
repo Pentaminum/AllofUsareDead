@@ -186,8 +186,6 @@ public class Player extends Entity {
                 hasSpecialReward--;
                 gamePanel.zombies[i]=null;
             }
-
-
         }
     }
 

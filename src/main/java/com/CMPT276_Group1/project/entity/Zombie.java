@@ -1,7 +1,6 @@
 package com.CMPT276_Group1.project.entity;
 
-import com.CMPT276_Group1.project.GamePanel;
-import com.CMPT276_Group1.project.UtilityTool;
+import com.CMPT276_Group1.project.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -9,34 +8,21 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class Zombie extends Entity{
+public class Zombie extends Entity {
     GamePanel gamePanel;
 
-    public Zombie(GamePanel gamePanel){
-        this.gamePanel=gamePanel;
+    public Zombie(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
         name = "Zombie";
         speed = 2;
         maxLife = 1;
         life = maxLife;
 
         solidArea = new Rectangle(8, 16, 32, 32);
-        solidAreaDefaultX=solidArea.x;
-        solidAreaDefaultY=solidArea.y;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
 
         getImage();
-    }
-
-    public void chase(){
-        int speedX = gamePanel.player.x-x;
-        int speedY = gamePanel.player.y-y;
-        int maxSpeed;
-        maxSpeed = speed / 2;
-        if(speedX > maxSpeed) speedX = maxSpeed;
-        if(speedX < -maxSpeed) speedX = -maxSpeed;
-        if(speedY > maxSpeed) speedY = maxSpeed;
-        if(speedY < -maxSpeed) speedY = -maxSpeed;
-        x=x+speedX;
-        y=y+speedY;
     }
 
     public BufferedImage setUp(String imageName) {
@@ -51,7 +37,7 @@ public class Zombie extends Entity{
         return image;
     }
 
-    public void getImage(){
+    public void getImage() {
         down1 = setUp("zombie_down_1");
         down2 = setUp("zombie_down_2");
         left1 = setUp("zombie_left_1");
@@ -76,8 +62,8 @@ public class Zombie extends Entity{
         gamePanel.collisionChecker.checkZombie(this, gamePanel.zombies);
 
         //check player collision
-        boolean attack=gamePanel.collisionChecker.checkPlayer(this);
-        contactPlayer(attack,this);
+        boolean attack = gamePanel.collisionChecker.checkPlayer(this);
+        contactPlayer(attack, this);
 
         if (!collisionOn) {
             switch (direction) {
@@ -89,45 +75,73 @@ public class Zombie extends Entity{
         }
     }
 
-    public void setAction(){
-        spriteCounter ++;
-        if(spriteCounter==120){
-            Random random = new Random();
-            int i = random.nextInt(100)+1;
-            if(i<=25){
-                direction="up";
-            }
-            if(i>25 && i<=50){
-                direction="down";
-            }
-            if(i>50 && i<=75){
-                direction="left";
-            }
-            if(i>75){
-                direction="right";
-            }
 
-            if (spriteNum == 1) {
-                spriteNum = 2;
-            } else {
-                spriteNum = 1;
+    public void setAction() {
+        spriteCounter++;
+        int playerX = gamePanel.player.x;
+        int playerY = gamePanel.player.y;
+        int distance = (int) Math.sqrt((playerX - x) * (playerX - x) + (playerY - y) * (playerX - y));
+        if (distance <= 3 * gamePanel.tileSize) {
+            speed=3;
+            if (spriteCounter == 20) {
+                if (x < playerX) {
+                    direction="right";
+                } else if (x > playerX+gamePanel.player.solidArea.width) {
+                    direction="left";
+                } else {
+                    if(y<playerY){
+                        direction="down";
+                    }else if(y>playerY+gamePanel.player.solidArea.height){
+                        direction="up";
+                    }
+                }
+                if (spriteNum == 1) {
+                    spriteNum = 2;
+                } else {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
             }
-            spriteCounter=0;
+        } else {
+            speed=2;
+            if (spriteCounter == 20) {
+                Random random = new Random();
+                int i = random.nextInt(100) + 1;
+                if (i <= 25) {
+                    direction = "up";
+                }
+                if (i > 25 && i <= 50) {
+                    direction = "down";
+                }
+                if (i > 50 && i <= 75) {
+                    direction = "left";
+                }
+                if (i > 75) {
+                    direction = "right";
+                }
+
+                if (spriteNum == 1) {
+                    spriteNum = 2;
+                } else {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
+            }
         }
     }
 
-    public void contactPlayer(boolean isPlayer,Entity entity){
-        if(isPlayer){
-            if(gamePanel.player.hasSpecialReward==0){
-                if(!gamePanel.player.invincible){
-                    gamePanel.player.life-=1;
-                    gamePanel.player.invincible=true;
+    public void contactPlayer(boolean isPlayer, Entity entity) {
+        if (isPlayer) {
+            if (gamePanel.player.hasSpecialReward == 0) {
+                if (!gamePanel.player.invincible) {
+                    gamePanel.player.life -= 1;
+                    gamePanel.player.invincible = true;
                 }
-            }else{
+            } else {
                 gamePanel.player.hasSpecialReward--;
-                for(int i=0;i<gamePanel.zombies.length;i++){
-                    if(gamePanel.zombies[i]==entity){
-                        gamePanel.zombies[i]=null;
+                for (int i = 0; i < gamePanel.zombies.length; i++) {
+                    if (gamePanel.zombies[i] == entity) {
+                        gamePanel.zombies[i] = null;
                     }
                 }
             }
