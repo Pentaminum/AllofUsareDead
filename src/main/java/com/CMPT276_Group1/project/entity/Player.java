@@ -9,12 +9,20 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 
+/**
+ * Player class that handles the player and all interactions the player has with entities
+ */
 public class Player extends Entity {
     GamePanel gamePanel;
     KeyHandler keyHandler;
     public int hasRegularReward = 0;
     public int hasSpecialReward = 0;
 
+    /**
+     * Constructor for Player class
+     * @param gamePanel
+     * @param keyHandler
+     */
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
@@ -27,6 +35,9 @@ public class Player extends Entity {
         getPlayerImage();
     }
 
+    /**
+     * Set default values for the player class that were not set in the constructor
+     */
     public void setDefaultValue() {
         x = 48;
         y = 48;
@@ -38,6 +49,9 @@ public class Player extends Entity {
         life=maxLife;
     }
 
+    /**
+     * Setting player sprite
+     */
     public void getPlayerImage() {
         up1 = setUp("main_character_up_1");
         up2 = setUp("main_character_up_2");
@@ -49,6 +63,11 @@ public class Player extends Entity {
         right2 = setUp("main_character_right_2");
     }
 
+    /**
+     * Reading our png files to get the player sprite
+     * @param imageName
+     * @return
+     */
     public BufferedImage setUp(String imageName) {
         UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
@@ -61,6 +80,9 @@ public class Player extends Entity {
         return image;
     }
 
+    /**
+     * Updates our player on each frame based on player input
+     */
     public void update() {
 
         if (keyHandler.downPressed || keyHandler.upPressed || keyHandler.leftPressed || keyHandler.rightPressed) {
@@ -120,6 +142,10 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Allows player to pickup objects and exit the game when they have picked up all objects
+     * @param i
+     */
     public void pickUpObject(int i) {
         if (i != 999) {
             String objectName = gamePanel.obj[i].name;
@@ -145,6 +171,10 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Make the player take damage when they make contact with a zombie
+     * @param i
+     */
     public void contactZombie(int i){
         if(i!=999){
             if(hasSpecialReward==0){
@@ -161,6 +191,10 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Draw the player sprite based on what direction the player is moving
+     * @param g2D
+     */
     public void draw(Graphics2D g2D) {
         BufferedImage image = null;
         switch (direction) {

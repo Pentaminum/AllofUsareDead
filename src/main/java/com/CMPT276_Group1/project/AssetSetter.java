@@ -6,10 +6,17 @@ import com.CMPT276_Group1.project.object.*;
 public class AssetSetter {
     GamePanel gamePanel;
 
+    /**
+     * @param gamePanel
+     * Creates AssetSetter class for the current game
+     */
     public AssetSetter(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
 
+    /**
+     * Creates all rewards, and the exit for the game state
+     */
     public void setObject(){
         //Creating regular rewards (students) which must be collected to complete the game
         gamePanel.obj[0]=new RegularReward(gamePanel);
@@ -34,6 +41,10 @@ public class AssetSetter {
         gamePanel.obj[5].y=14*gamePanel.tileSize;
         gamePanel.obj[5].collision=true;
     }
+
+    /**
+     * Creates all traps for the game
+     */
     public void setTrap(){
         gamePanel.traps[0] = new Trap(gamePanel);
         gamePanel.traps[0].x=6*gamePanel.tileSize;
@@ -52,6 +63,9 @@ public class AssetSetter {
         gamePanel.traps[4].y=12*gamePanel.tileSize;
     }
 
+    /**
+     * Creates all zombies for the game
+     */
     public void setZombie(){
         gamePanel.zombies[0]=new Zombie(gamePanel);
         gamePanel.zombies[0].x=14*gamePanel.tileSize;
