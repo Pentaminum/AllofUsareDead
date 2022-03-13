@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
     //Entity and object
     public Player player = new Player(this, keyHandler);
     public ObjectSuper[] obj = new ObjectSuper[10];
-    public Trap trap=new Trap(this);
+    public Trap[] traps= new Trap[5];
     //number of zombies we can display at the same time
     public Zombie[] zombies =new Zombie[10];
 
@@ -129,7 +129,12 @@ public class GamePanel extends JPanel implements Runnable {
 
 
             //Trap
-            trap.draw(g2D, this);
+            for (Trap trap : traps) {
+                if(trap != null){
+                    trap.draw(g2D, this);
+                }
+            }
+
 
             //player
             player.draw(g2D);

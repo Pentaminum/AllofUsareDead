@@ -35,8 +35,21 @@ public class AssetSetter {
         gamePanel.obj[5].collision=true;
     }
     public void setTrap(){
-        gamePanel.trap.x=6*gamePanel.tileSize;
-        gamePanel.trap.y=7*gamePanel.tileSize;
+        gamePanel.traps[0] = new Trap(gamePanel);
+        gamePanel.traps[0].x=6*gamePanel.tileSize;
+        gamePanel.traps[0].y=7*gamePanel.tileSize;
+        gamePanel.traps[1] = new Trap(gamePanel);
+        gamePanel.traps[1].x=11*gamePanel.tileSize;
+        gamePanel.traps[1].y=12*gamePanel.tileSize;
+        gamePanel.traps[2] = new Trap(gamePanel);
+        gamePanel.traps[2].x=13*gamePanel.tileSize;
+        gamePanel.traps[2].y=5*gamePanel.tileSize;
+        gamePanel.traps[3] = new Trap(gamePanel);
+        gamePanel.traps[3].x=4*gamePanel.tileSize;
+        gamePanel.traps[3].y=9*gamePanel.tileSize;
+        gamePanel.traps[4] = new Trap(gamePanel);
+        gamePanel.traps[4].x=17*gamePanel.tileSize;
+        gamePanel.traps[4].y=12*gamePanel.tileSize;
     }
 
     public void setZombie(){

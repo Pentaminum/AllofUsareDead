@@ -83,8 +83,9 @@ public class Player extends Entity {
             pickUpObject(objectIndex);
 
             //check trap
-            gamePanel.trap.checkEvent();
-
+            for (int i= 0; i< gamePanel.traps.length; i++) {
+                gamePanel.traps[i].checkEvent(i);
+            }
             //check zombie
             int monsterIndex=gamePanel.collisionChecker.checkZombie(this,gamePanel.zombies);
             contactZombie(monsterIndex);

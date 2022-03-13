@@ -25,15 +25,15 @@ public class Trap extends ObjectSuper {
             e.printStackTrace();
         }
     }
-    public void checkEvent(){
-        if(hit(gamePanel.trap.x/gamePanel.tileSize,gamePanel.trap.y/gamePanel.tileSize,"left")){
-            trapDamage(gamePanel.playState, "left");
-        }else if(hit(gamePanel.trap.x/gamePanel.tileSize,gamePanel.trap.y/gamePanel.tileSize,"right")){
-            trapDamage(gamePanel.playState, "right");
-        }else if(hit(gamePanel.trap.x/gamePanel.tileSize,gamePanel.trap.y/gamePanel.tileSize,"up")){
-            trapDamage(gamePanel.playState, "up");
-        }else if(hit(gamePanel.trap.x/gamePanel.tileSize,gamePanel.trap.y/gamePanel.tileSize,"down")){
-            trapDamage(gamePanel.playState, "down");
+    public void checkEvent(int i){
+        if(hit(gamePanel.traps[i].x/gamePanel.tileSize,gamePanel.traps[i].y/gamePanel.tileSize,"left")){
+            trapDamage(gamePanel.playState, i,"left");
+        }else if(hit(gamePanel.traps[i].x/gamePanel.tileSize,gamePanel.traps[i].y/gamePanel.tileSize,"right")){
+            trapDamage(gamePanel.playState, i, "right");
+        }else if(hit(gamePanel.traps[i].x/gamePanel.tileSize,gamePanel.traps[i].y/gamePanel.tileSize,"up")){
+            trapDamage(gamePanel.playState, i, "up");
+        }else if(hit(gamePanel.traps[i].x/gamePanel.tileSize,gamePanel.traps[i].y/gamePanel.tileSize,"down")){
+            trapDamage(gamePanel.playState, i, "down");
         }
     }
     public boolean hit(int eventCol, int eventRow, String reqDirection){
@@ -57,14 +57,14 @@ public class Trap extends ObjectSuper {
         return hit;
     }
 
-    public void trapDamage(int gameState, String direction){
+    public void trapDamage(int gameState, int i, String direction){
         gamePanel.gameState=gameState;
         gamePanel.player.life-=1;
         switch ((direction)) {
-            case "right" -> gamePanel.player.x += gamePanel.trap.solidArea.width + gamePanel.player.solidArea.width;
-            case "left" -> gamePanel.player.x -= (gamePanel.trap.solidArea.width + gamePanel.player.solidArea.width);
-            case "up" -> gamePanel.player.y -= (gamePanel.trap.solidArea.height + gamePanel.player.solidArea.height);
-            case "down" -> gamePanel.player.y += gamePanel.trap.solidArea.height +gamePanel.player.solidArea.height;
+            case "right" -> gamePanel.player.x += gamePanel.traps[i].solidArea.width + gamePanel.player.solidArea.width;
+            case "left" -> gamePanel.player.x -= (gamePanel.traps[i].solidArea.width + gamePanel.player.solidArea.width);
+            case "up" -> gamePanel.player.y -= (gamePanel.traps[i].solidArea.height + gamePanel.player.solidArea.height);
+            case "down" -> gamePanel.player.y += gamePanel.traps[i].solidArea.height +gamePanel.player.solidArea.height;
         }
 
     }
