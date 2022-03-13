@@ -64,7 +64,7 @@ public class Zombie extends Entity{
 
     public void update() {
         setAction();
-        chase();
+        //chase();
         //check tile collision
         collisionOn = false;
         gamePanel.collisionChecker.checkTile(this);
@@ -76,8 +76,8 @@ public class Zombie extends Entity{
         gamePanel.collisionChecker.checkZombie(this, gamePanel.zombies);
 
         //check player collision
-        gamePanel.collisionChecker.checkPlayer(this);
-
+        boolean attack=gamePanel.collisionChecker.checkPlayer(this);
+        contactPlayer(attack,this);
 
         if (!collisionOn) {
             switch (direction) {
@@ -113,6 +113,24 @@ public class Zombie extends Entity{
                 spriteNum = 1;
             }
             spriteCounter=0;
+        }
+    }
+
+    public void contactPlayer(boolean isPlayer,Entity entity){
+        if(isPlayer){
+            if(gamePanel.player.hasSpecialReward==0){
+                if(!gamePanel.player.invincible){
+                    gamePanel.player.life-=1;
+                    gamePanel.player.invincible=true;
+                }
+            }else{
+                gamePanel.player.hasSpecialReward--;
+                for(int i=0;i<gamePanel.zombies.length;i++){
+                    if(gamePanel.zombies[i]==entity){
+                        gamePanel.zombies[i]=null;
+                    }
+                }
+            }
         }
     }
 
