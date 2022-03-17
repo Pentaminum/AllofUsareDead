@@ -8,9 +8,18 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
+/**
+ * The Zombie class that implements all interactions the zombies
+ * has with entities
+ */
 public class Zombie extends Entity {
     GamePanel gamePanel;
 
+    /**
+     * The constructor that initializes the features of the zombies
+     * as well as the areas
+     * @param gamePanel the GamePanel object
+     */
     public Zombie(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         name = "Zombie";
@@ -25,6 +34,12 @@ public class Zombie extends Entity {
         getImage();
     }
 
+    /**
+     * Read and scale the png files that can then be displayed
+     * on the screen.
+     * @param imageName a PNG file of the image
+     * @return the image of the specified PNG
+     */
     public BufferedImage setUp(String imageName) {
         UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
@@ -37,6 +52,9 @@ public class Zombie extends Entity {
         return image;
     }
 
+    /**
+     * Setting zombie sprite
+     */
     public void getImage() {
         down1 = setUp("zombie_down_1");
         down2 = setUp("zombie_down_2");
@@ -48,6 +66,12 @@ public class Zombie extends Entity {
         up2 = setUp("zombie_up_2");
     }
 
+    /**
+     * Update the action of the zombies and check for collisions.
+     * If moving enemies pass through cells that contain rewards
+     * or punishments, it won’t affect the awards/punishments.
+     * The enemies cannot go through the walls/barriers either.
+     */
     public void update() {
         setAction();
         //chase();
@@ -75,7 +99,13 @@ public class Zombie extends Entity {
         }
     }
 
-
+    /**
+     * Set the action of the zombies. When the distance between the
+     * Zombie and the Player is less than three times the tile size,
+     * The Zombie will move towards a direction that makes them
+     * closest to the current position of the Player. Otherwise,
+     * they will move randomly.
+     */
     public void setAction() {
         spriteCounter++;
         int playerX = gamePanel.player.x;
@@ -130,6 +160,15 @@ public class Zombie extends Entity {
         }
     }
 
+    /**
+     * When the Zombie contact the Player, if the Player has a special
+     * reward, then the Player can kill the Zombie. Otherwise, the
+     * player will lose one life and become invincible for a few seconds.
+     * @param isPlayer Whether the object that contacts the Zombie is
+     *                 a player or not.
+     * @param entity An Entity object to test whether the zombie is still
+     *               an entity
+     */
     public void contactPlayer(boolean isPlayer, Entity entity) {
         if (isPlayer) {
             if (gamePanel.player.hasSpecialReward == 0) {
@@ -148,6 +187,10 @@ public class Zombie extends Entity {
         }
     }
 
+    /**
+     * Draws the images of the Zombies in each case.
+     * @param g2D the 2D graphics object
+     */
     public void draw(Graphics2D g2D) {
         BufferedImage image = null;
         switch (direction) {

@@ -20,8 +20,8 @@ public class Player extends Entity {
 
     /**
      * Constructor for Player class
-     * @param gamePanel
-     * @param keyHandler
+     * @param gamePanel the GamePanel object
+     * @param keyHandler the KeyHandler object
      */
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
@@ -65,8 +65,8 @@ public class Player extends Entity {
 
     /**
      * Reading our png files to get the player sprite
-     * @param imageName
-     * @return
+     * @param imageName a PNG file of the image
+     * @return the image of the specified PNG
      */
     public BufferedImage setUp(String imageName) {
         UtilityTool utilityTool = new UtilityTool();
@@ -144,7 +144,7 @@ public class Player extends Entity {
 
     /**
      * Allows player to pickup objects and exit the game when they have picked up all objects
-     * @param i
+     * @param i an index to the reward array
      */
     public void pickUpObject(int i) {
         if (i != 999) {
@@ -173,7 +173,7 @@ public class Player extends Entity {
 
     /**
      * Make the player take damage when they make contact with a zombie
-     * @param i
+     * @param i an index to the zombie array
      */
     public void contactZombie(int i){
         if(i!=999){
