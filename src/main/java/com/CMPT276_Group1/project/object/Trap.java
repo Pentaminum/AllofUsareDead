@@ -6,8 +6,18 @@ import javax.imageio.*;
 import java.awt.*;
 import java.io.*;
 
+/**
+ * The trap class. Traps that can make the player lose health when they
+ * pass through.
+ */
 public class Trap extends ObjectSuper {
     GamePanel gamePanel;
+
+    /**
+     * Constructor for features of the trap as well as the image of
+     * the trap.
+     * @param gamePanel the current gamePanel describing the game state
+     */
     public Trap(GamePanel gamePanel){
         this.gamePanel=gamePanel;
         name="Trap";
@@ -25,6 +35,11 @@ public class Trap extends ObjectSuper {
             e.printStackTrace();
         }
     }
+
+    /**
+     *
+     * @param i
+     */
     public void checkEvent(int i){
         if(hit(gamePanel.traps[i].x/gamePanel.tileSize,gamePanel.traps[i].y/gamePanel.tileSize,"left")){
             trapDamage(gamePanel.playState, i,"left");

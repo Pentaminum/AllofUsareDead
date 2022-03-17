@@ -18,7 +18,7 @@ public class Zombie extends Entity {
     /**
      * The constructor that initializes the features of the zombies
      * as well as the areas
-     * @param gamePanel the GamePanel object
+     * @param gamePanel the current gamePanel describing the game state
      */
     public Zombie(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -53,7 +53,7 @@ public class Zombie extends Entity {
     }
 
     /**
-     * Setting zombie sprite
+     * Setting zombie sprite.
      */
     public void getImage() {
         down1 = setUp("zombie_down_1");
@@ -165,7 +165,7 @@ public class Zombie extends Entity {
      * reward, then the Player can kill the Zombie. Otherwise, the
      * player will lose one life and become invincible for a few seconds.
      * @param isPlayer Whether the object that contacts the Zombie is
-     *                 a player or not.
+     *                 a player or not
      * @param entity An Entity object to test whether the zombie is still
      *               an entity
      */
@@ -189,7 +189,7 @@ public class Zombie extends Entity {
 
     /**
      * Draws the images of the Zombies in each case.
-     * @param g2D the 2D graphics object
+     * @param g2D the 2D graphics parameter
      */
     public void draw(Graphics2D g2D) {
         BufferedImage image = null;

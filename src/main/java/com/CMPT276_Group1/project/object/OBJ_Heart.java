@@ -5,8 +5,17 @@ import com.CMPT276_Group1.project.*;
 import javax.imageio.*;
 import java.io.*;
 
+/**
+ * The heart class that displays the health bar of the player.
+ */
 public class OBJ_Heart extends ObjectSuper{
     GamePanel gamePanel;
+
+    /**
+     * Read and scale the PNG files to get three heart images, which
+     * is the health bar of the player.
+     * @param gamePanel the current gamePanel describing the game state
+     */
     public OBJ_Heart(GamePanel gamePanel){
         this.gamePanel=gamePanel;
         name="Heart";

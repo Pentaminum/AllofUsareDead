@@ -20,7 +20,7 @@ public class Player extends Entity {
 
     /**
      * Constructor for Player class
-     * @param gamePanel the GamePanel object
+     * @param gamePanel the current gamePanel describing the game state
      * @param keyHandler the KeyHandler object
      */
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
