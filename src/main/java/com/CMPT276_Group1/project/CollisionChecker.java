@@ -3,13 +3,24 @@ package com.CMPT276_Group1.project;
 
 import com.CMPT276_Group1.project.entity.*;
 
+/**
+ * Class used to check for collisions between entities and other objects
+ */
 public class CollisionChecker {
     GamePanel gamePanel;
 
+    /**
+     * Constructor for the CollisionChecker instance
+     * @param gamePanel the current gamePanel describing the game state
+     */
     public CollisionChecker(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
 
+    /**
+     * Check if the direction the entity is taking will cause collision with a tile, namely a wall
+     * @param entity the entity for which we are checking collision
+     */
     public void checkTile(Entity entity) {
         int entityPublicLeftX = entity.x + entity.solidArea.x;
         int entityPublicRightX = entity.x + entity.solidArea.x + entity.solidArea.width;
@@ -63,6 +74,12 @@ public class CollisionChecker {
 
     }
 
+    /**
+     * Check if the entity makes contact with an object, if it is the player then we return the index of the object
+     * @param entity the entity for which we are checking collision
+     * @param player boolean describing if the entity is a player or not
+     * @return returns the object index of the object if it was picked up by the player
+     */
     public int checkObject(Entity entity, boolean player) {
         int index = 999;
 
@@ -91,6 +108,10 @@ public class CollisionChecker {
         return index;
     }
 
+    /**
+     * If we encountered something we cannot move through then we will move the player back before the frame is drawn
+     * @param entity the entity for which we are checking collision
+     */
     private void stopEntity(Entity entity) {
         switch (entity.direction) {
             case "up" -> {
@@ -108,6 +129,11 @@ public class CollisionChecker {
         }
     }
 
+    /**
+     * Check if the player made contact with the given entity
+     * @param entity the entity for which we are checking collision
+     * @return whether the player made contact or not
+     */
     public boolean checkPlayer(Entity entity) {
         boolean contactPlayer=false;
         entity.solidArea.x = entity.x + entity.solidArea.x;
@@ -126,6 +152,12 @@ public class CollisionChecker {
         return contactPlayer;
     }
 
+    /**
+     * Check if any of the zombies made contact with the current entity
+     * @param entity the entity for which we are checking collision
+     * @param target the array of zombies created by the game
+     * @return the index of the zombie that made contact with the entity
+     */
     public int checkZombie(Entity entity, Entity[] target) {
         int index = 999;
 

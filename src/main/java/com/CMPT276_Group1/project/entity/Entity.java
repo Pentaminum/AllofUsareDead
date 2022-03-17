@@ -5,7 +5,10 @@ import com.CMPT276_Group1.project.object.*;
 import java.awt.*;
 import java.awt.image.*;
 
-
+/**
+ * Entity class that will be the parent to both zombie and player.
+ * Defines member variables that will be used by all entities
+ */
 public class Entity extends ObjectSuper {
     public int maxLife;
     public int life;
