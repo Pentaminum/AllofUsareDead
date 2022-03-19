@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 
+/**
+ * This class is to create and operate our User Interface for the game
+ */
 public class UI {
     GamePanel gamePanel;
     Font arial_40, arial_80B;
@@ -16,6 +19,10 @@ public class UI {
     public int commandNum=0;
     public int score=0;
 
+    /**
+     * Constructor for the UI
+     * @param gamePanel the game instance
+     */
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         arial_40 = new Font("Arial", Font.PLAIN, 40);
@@ -31,6 +38,10 @@ public class UI {
 
     }
 
+    /**
+     * Draw the UI onto the screen and take into account the different game states.
+     * @param graphics2D the graphics object we will use to draw the UI
+     */
     public void draw(Graphics2D graphics2D) {
         this.graphic2D = graphics2D;
 
@@ -61,6 +72,9 @@ public class UI {
         }
     }
 
+    /**
+     * Draws the title screen part by part onto the window
+     */
     public void drawTitleScreen(){
         BufferedImage image1=null,image2=null;
         try{
@@ -112,6 +126,9 @@ public class UI {
         }
     }
 
+    /**
+     * Draws the player health bar depending on current life
+     */
     public void drawPlayerLife(){
         int x=17*gamePanel.tileSize;
         int y=0;
@@ -141,6 +158,9 @@ public class UI {
         }
     }
 
+    /**
+     * Draw the pause screen
+     */
     public void drawPauseScreen() {
         String text = "PAUSED";
         int x = getXForCenterText(text);
@@ -148,6 +168,9 @@ public class UI {
         graphic2D.drawString(text, x, y);
     }
 
+    /**
+     * Draw the finish screen for either victory or defeat
+     */
     public void drawFinishScreen(){
         BufferedImage image1=null,image2=null;
         try{
@@ -187,7 +210,8 @@ public class UI {
             x=getXForCenterText(text);
             y+=gamePanel.tileSize*2;
             graphic2D.drawString(text,x,y);
-            score=(gamePanel.player.life*100+gamePanel.player.hasRegularReward*200+gamePanel.player.hasSpecialReward*500);
+            score=(gamePanel.player.life*100+gamePanel.player.hasRegularReward*200+gamePanel.player.hasSpecialReward*500
+            +gamePanel.player.zombieDefeated*700);
         }
         text="score: "+score;
         x=getXForCenterText(text);
@@ -198,6 +222,11 @@ public class UI {
         graphic2D.drawImage(image1,gamePanel.tileSize*8,y,gamePanel.tileSize*4,(gamePanel.tileSize*3),null);
     }
 
+    /**
+     * Useful function to get the x coordinate to center a text string
+     * @param text the string we want to center
+     * @return the x coordinate required to center it
+     */
     public int getXForCenterText(String text) {
         int length = (int) graphic2D.getFontMetrics().getStringBounds(text, graphic2D).getWidth();
         return gamePanel.screenWidth / 2 - length / 2;
