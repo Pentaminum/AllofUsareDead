@@ -16,6 +16,7 @@ public class Player extends Entity {
     KeyHandler keyHandler;
     public int hasRegularReward = 0;
     public int hasSpecialReward = 0;
+    public int zombieDefeated=0;
 
     /**
      * Constructor for Player class
@@ -183,6 +184,7 @@ public class Player extends Entity {
                 }
             }else{
                 hasSpecialReward--;
+                zombieDefeated++;
                 gamePanel.zombies[i]=null;
             }
         }

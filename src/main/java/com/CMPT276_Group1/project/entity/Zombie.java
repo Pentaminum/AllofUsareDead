@@ -179,9 +179,11 @@ public class Zombie extends Entity {
                 }
             } else {
                 gamePanel.player.hasSpecialReward--;
+                gamePanel.player.zombieDefeated++;
                 for (int i = 0; i < gamePanel.zombies.length; i++) {
                     if (gamePanel.zombies[i] == entity) {
                         gamePanel.zombies[i] = null;
+
                     }
                 }
             }
