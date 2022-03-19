@@ -7,6 +7,9 @@ import com.CMPT276_Group1.project.tile.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The main interface for creating the game. Holds important variables and objects for running the game
+ */
 public class GamePanel extends JPanel implements Runnable {
     //Screen setting
     final int originalTitleSize = 16;//16 x 16 tile
@@ -47,6 +50,9 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     public final int finishState = 3;
 
+    /**
+     * Constructor for the game panel that actually creates the window and sets up a key press handler
+     */
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -55,6 +61,9 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
+    /**
+     * Setting the objects onto the board and starting the game with music on the title screen
+     */
     public void setupGameObject() {
         assetSetter.setObject();
         assetSetter.setTrap();
@@ -63,11 +72,17 @@ public class GamePanel extends JPanel implements Runnable {
         gameState = titleState;
     }
 
+    /**
+     * Creates and starts the game thread
+     */
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
     }
 
+    /**
+     * Run the game. Creates the frame timing to only update and draw the game once per frame at 60 FPS
+     */
     @Override
     public void run() {
         double drawInterval = 1000000000 / FPS;
@@ -92,6 +107,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    /**
+     * Update the player and zombies with their movement
+     */
     public void update() {
         if (gameState == playState) {
             player.update();
@@ -104,6 +122,11 @@ public class GamePanel extends JPanel implements Runnable {
         } else if (gameState == pauseState) {}
     }
 
+    /**
+     * Paint all components onto the screen. Goes through all objects, player, traps, zombies, and tiles
+     * and draws them onto the screen.
+     * @param g the graphics object we will use to draw onto the screen
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
@@ -114,7 +137,6 @@ public class GamePanel extends JPanel implements Runnable {
             drawStart = System.nanoTime();
         }
 
-        //Title screen
         if (gameState != titleState && gameState != finishState) {
             //Tile
             tileManager.draw(g2D);
@@ -162,16 +184,27 @@ public class GamePanel extends JPanel implements Runnable {
         g2D.dispose();
     }
 
+    /**
+     * Play the music
+     * @param i allows selection of the music to be played
+     */
     public void playMusic(int i) {
         music.setFile(i);
         music.play();
         music.loop();
     }
 
+    /**
+     * Stop playing the current music
+     */
     public void stopMusic() {
         music.stop();
     }
 
+    /**
+     * Play a certain sound effect
+     * @param i allows selection of the soundEffect to be played
+     */
     public void playSoundEffect(int i) {
         soundEffect.setFile(i);
         soundEffect.play();

@@ -4,21 +4,36 @@ import com.CMPT276_Group1.project.entity.*;
 
 import java.awt.event.*;
 
+/**
+ * Our Keyhandler class to handle keyboard input
+ */
 public class KeyHandler implements KeyListener {
     public boolean upPressed,downPressed,leftPressed, rightPressed;
     GamePanel gamePanel;
     //Debug
     boolean checkDrawTime=false;
 
+    /**
+     * Constructor to set up a keyhandler for the given game panel
+     * @param gamePanel the current game instance
+     */
     public KeyHandler(GamePanel gamePanel){
         this.gamePanel=gamePanel;
     }
 
+    /**
+     * This is to override the standard keytyped method in keylistener, as we want it to do nothing
+     * @param e the key that was pressed
+     */
     @Override
     public void keyTyped(KeyEvent e) {
 
     }
 
+    /**
+     * Depending on what key is pressed and what state we are in, we do different things in the game.
+     * @param e The key that was pressed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int code=e.getKeyCode();
@@ -85,6 +100,10 @@ public class KeyHandler implements KeyListener {
         }
     }
 
+    /**
+     * When the movement key is released we need to stop moving
+     * @param e the key that was pressed
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         int code=e.getKeyCode();
