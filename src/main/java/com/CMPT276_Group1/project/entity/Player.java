@@ -2,7 +2,6 @@ package com.CMPT276_Group1.project.entity;
 
 
 import com.CMPT276_Group1.project.*;
-import com.CMPT276_Group1.project.object.*;
 
 import javax.imageio.*;
 import java.awt.*;
