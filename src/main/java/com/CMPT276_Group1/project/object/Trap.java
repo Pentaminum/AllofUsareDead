@@ -75,6 +75,9 @@ public class Trap extends ObjectSuper {
     public void trapDamage(int gameState, int i, String direction){
         gamePanel.gameState=gameState;
         gamePanel.player.life-=1;
+        if(!gamePanel.player.invincible){
+            gamePanel.player.invincible=true;
+        }
         switch ((direction)) {
             case "right" -> gamePanel.player.x += gamePanel.traps[i].solidArea.width + gamePanel.player.solidArea.width;
             case "left" -> gamePanel.player.x -= (gamePanel.traps[i].solidArea.width + gamePanel.player.solidArea.width);

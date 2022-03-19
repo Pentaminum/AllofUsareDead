@@ -11,6 +11,7 @@ import java.util.Random;
 /**
  * The Zombie class that implements all interactions the zombies
  * has with entities
+ * check{@link com.CMPT276_Group1.project.entity}class for true identity
  */
 public class Zombie extends Entity {
     GamePanel gamePanel;
