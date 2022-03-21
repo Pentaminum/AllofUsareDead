@@ -21,7 +21,7 @@ public class Player extends Entity {
     /**
      * Constructor for Player class
      * @param gamePanel the current gamePanel describing the game state
-     * @param keyHandler the KeyHandler object
+     * @param keyHandler the key handler parameter
      */
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
@@ -192,7 +192,7 @@ public class Player extends Entity {
 
     /**
      * Draw the player sprite based on what direction the player is moving
-     * @param g2D
+     * @param the 2D graphics parameter
      */
     public void draw(Graphics2D g2D) {
         BufferedImage image = null;
