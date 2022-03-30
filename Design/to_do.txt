@@ -1,4 +1,2 @@
-1. implement zombie algorithm
-2. reconstruct maze and object(add a few more special/regular reward)
-3. documentation & Java doc
-4. report
+Unit Testing
+    Brendan - KeyHandler, AssetSetter, TileManager, Exit
