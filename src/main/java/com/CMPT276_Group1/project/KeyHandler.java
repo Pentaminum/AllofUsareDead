@@ -36,8 +36,11 @@ public class KeyHandler implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        int code=e.getKeyCode();
+        int code = e.getKeyCode();
+        keyPressedAction(code);
+    }
 
+    public void keyPressedAction(int code){
         //Title state
         if(gamePanel.gameState==gamePanel.titleState){
             if(code==KeyEvent.VK_W){
@@ -106,7 +109,11 @@ public class KeyHandler implements KeyListener {
      */
     @Override
     public void keyReleased(KeyEvent e) {
-        int code=e.getKeyCode();
+        int code = e.getKeyCode();
+        keyReleasedAction(code);
+    }
+
+    public void keyReleasedAction(int code) {
         if(code==KeyEvent.VK_W){
             upPressed=false;
         }
