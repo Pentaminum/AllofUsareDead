@@ -13,6 +13,7 @@ public class KeyHandlerTest {
 
     @Test
     public void keyReleasedTest() {
+        System.out.println("Testing if JUnit is working");
         keyReleasedAction(KeyEvent.VK_W);
         assertEquals(KH.upPressed, false,  "When the W key is released, upPressed should be false");
         keyReleasedAction(KeyEvent.VK_A);
