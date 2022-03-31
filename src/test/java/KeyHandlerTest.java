@@ -1,6 +1,12 @@
-import org.junit.Test;
-import com.CMPT276_Group1.project.entity.*;
+import com.CMPT276_Group1.project.*;
+import org.junit.jupiter.api.*;
+
 import java.awt.event.*;
+
+import static com.CMPT276_Group1.project.KeyHandler.keyReleasedAction;
+import static com.CMPT276_Group1.project.KeyHandler.keyPressedAction;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class KeyHandlerTest {
 
     private KeyHandler KH;
@@ -15,25 +21,25 @@ public class KeyHandlerTest {
     public void keyReleasedTest() {
         System.out.println("Testing if JUnit is working");
         keyReleasedAction(KeyEvent.VK_W);
-        assertEquals(KH.upPressed, false,  "When the W key is released, upPressed should be false");
+        assertFalse(KeyHandler.upPressed, "When the W key is released, upPressed should be false");
         keyReleasedAction(KeyEvent.VK_A);
-        assertEquals(KH.leftPressed, false,  "When the A key is released, leftPressed should be false");
+        assertFalse(KeyHandler.leftPressed, "When the A key is released, leftPressed should be false");
         keyReleasedAction(KeyEvent.VK_S);
-        assertEquals(KH.downPressed, false,  "When the S key is released, downPressed should be false");
+        assertFalse(KeyHandler.downPressed, "When the S key is released, downPressed should be false");
         keyReleasedAction(KeyEvent.VK_D);
-        assertEquals(KH.rightPressed, false,  "When the D key is released, rightPressed should be false");
+        assertFalse(KeyHandler.rightPressed, "When the D key is released, rightPressed should be false");
     }
     @Test
     public void keyTypedTest() {
-        GP.gameState = gamePanel.playState;
+        GP.gameState = GP.playState;
         keyPressedAction(KeyEvent.VK_W);
-        assertEquals(KH.upPressed, true,  "When the W key is pressed, upPressed should be true");
+        assertTrue(KeyHandler.upPressed, "When the W key is pressed, upPressed should be true");
         keyPressedAction(KeyEvent.VK_A);
-        assertEquals(KH.leftPressed, true,  "When the A key is pressed, leftPressed should be true");
+        assertTrue(KeyHandler.leftPressed, "When the A key is pressed, leftPressed should be true");
         keyPressedAction(KeyEvent.VK_S);
-        assertEquals(KH.downPressed, true,  "When the S key is pressed, downPressed should be true");
+        assertTrue(KeyHandler.downPressed, "When the S key is pressed, downPressed should be true");
         keyPressedAction(KeyEvent.VK_D);
-        assertEquals(KH.rightPressed, true,  "When the D key is pressed, rightPressed should be true");
+        assertTrue(KeyHandler.rightPressed, "When the D key is pressed, rightPressed should be true");
     }
 
 }
