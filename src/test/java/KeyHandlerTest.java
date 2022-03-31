@@ -24,7 +24,15 @@ public class KeyHandlerTest {
     }
     @Test
     public void keyTypedTest() {
-
+        GP.gameState = gamePanel.playState;
+        keyPressedAction(KeyEvent.VK_W);
+        assertEquals(KH.upPressed, true,  "When the W key is pressed, upPressed should be true");
+        keyPressedAction(KeyEvent.VK_A);
+        assertEquals(KH.leftPressed, true,  "When the A key is pressed, leftPressed should be true");
+        keyPressedAction(KeyEvent.VK_S);
+        assertEquals(KH.downPressed, true,  "When the S key is pressed, downPressed should be true");
+        keyPressedAction(KeyEvent.VK_D);
+        assertEquals(KH.rightPressed, true,  "When the D key is pressed, rightPressed should be true");
     }
 
 }
