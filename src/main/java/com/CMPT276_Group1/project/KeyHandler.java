@@ -40,6 +40,10 @@ public class KeyHandler implements KeyListener {
         keyPressedAction(code);
     }
 
+    /**
+     * Depending on what key is pressed and what state we are in, we do different things in the game.
+     * @param code The integer code of the key that was pressed
+     */
     public void keyPressedAction(int code){
         //Title state
         if(gamePanel.gameState==gamePanel.titleState){
@@ -113,6 +117,10 @@ public class KeyHandler implements KeyListener {
         keyReleasedAction(code);
     }
 
+    /**
+     * When the movement key is released we need to stop moving
+     * @param code the integer code of the key that was pressed
+     */
     public void keyReleasedAction(int code) {
         if(code==KeyEvent.VK_W){
             upPressed=false;

@@ -16,6 +16,12 @@ public class KeyHandlerTest {
     }
 
     @Test
+    public void constructorTest(GamePanel GP){
+        KH = new KeyHandler(GP);
+        assertNotNull(KH, "Check that the object is constructed correctly");
+    }
+
+    @Test
     public void keyReleasedTest() {
         System.out.println("Testing if JUnit is working");
         KH.keyReleasedAction(KeyEvent.VK_W);
