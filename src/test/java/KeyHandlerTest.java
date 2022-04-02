@@ -16,9 +16,9 @@ public class KeyHandlerTest {
     }
 
     @Test
-    public void constructorTest(GamePanel GP){
-        KH = new KeyHandler(GP);
-        assertNotNull(KH, "Check that the object is constructed correctly");
+    public void constructorTest(){
+        KeyHandler TestKH = new KeyHandler(GP);
+        assertNotNull(TestKH, "Check that the object is constructed correctly");
     }
 
     @Test
