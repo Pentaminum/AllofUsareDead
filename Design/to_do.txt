@@ -1,2 +1,3 @@
 Unit Testing
     Brendan - KeyHandler, AssetSetter, TileManager, Exit
+    Integration - TileManager.draw(Graphics2D)

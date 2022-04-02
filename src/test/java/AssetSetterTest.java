@@ -18,7 +18,7 @@ public class AssetSetterTest {
     @Test
     public void constructorTest(){
         AssetSetter TestAS = new AssetSetter(GP);
-        assertNotNull(TestAS, "Check that the object is constructed correctly");
+        assertNotNull(TestAS, "Check that the object is constructed");
     }
 
     @Test

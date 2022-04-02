@@ -13,7 +13,7 @@ public class TileManager {
     public int[][] mapTileNum;
     public TileManager(GamePanel gamePanel){
         this.gamePanel=gamePanel;
-        tile=new Tile[10];
+        tile=new Tile[3];
         mapTileNum=new int[gamePanel.maxScreenCol][gamePanel.maxScreenRow];
 
         getTileImage();
