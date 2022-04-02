@@ -8,7 +8,7 @@ import java.awt.event.*;
  * Our Keyhandler class to handle keyboard input
  */
 public class KeyHandler implements KeyListener {
-    public static boolean upPressed,downPressed,leftPressed, rightPressed;
+    public boolean upPressed,downPressed,leftPressed, rightPressed;
     static GamePanel gamePanel;
     //Debug
     static boolean checkDrawTime=false;
@@ -40,7 +40,7 @@ public class KeyHandler implements KeyListener {
         keyPressedAction(code);
     }
 
-    public static void keyPressedAction(int code){
+    public void keyPressedAction(int code){
         //Title state
         if(gamePanel.gameState==gamePanel.titleState){
             if(code==KeyEvent.VK_W){
@@ -113,7 +113,7 @@ public class KeyHandler implements KeyListener {
         keyReleasedAction(code);
     }
 
-    public static void keyReleasedAction(int code) {
+    public void keyReleasedAction(int code) {
         if(code==KeyEvent.VK_W){
             upPressed=false;
         }

@@ -4,8 +4,7 @@ import org.junit.jupiter.api.*;
 import java.awt.event.*;
 import java.io.File;
 
-import static com.CMPT276_Group1.project.KeyHandler.keyReleasedAction;
-import static com.CMPT276_Group1.project.KeyHandler.keyPressedAction;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RegularRewardTest {
