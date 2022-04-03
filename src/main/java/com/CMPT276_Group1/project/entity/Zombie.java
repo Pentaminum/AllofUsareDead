@@ -111,18 +111,18 @@ public class Zombie extends Entity {
         spriteCounter++;
         int playerX = gamePanel.player.x;
         int playerY = gamePanel.player.y;
-        int distance = (int) Math.sqrt((playerX - x) * (playerX - x) + (playerY - y) * (playerX - y));
+        int distance = (int) Math.sqrt((playerX - x) * (playerX - x) + (playerY - y) * (playerY - y));
         if (distance <= 3 * gamePanel.tileSize) {
             speed=3;
             if (spriteCounter == 20) {
                 if (x < playerX) {
                     direction="right";
-                } else if (x > playerX+gamePanel.player.solidArea.width) {
+                } else if (x > playerX+gamePanel.tileSize) {
                     direction="left";
                 } else {
-                    if(y<playerY){
+                    if(y<playerY+gamePanel.tileSize){
                         direction="down";
-                    }else if(y>playerY+gamePanel.player.solidArea.height){
+                    }else if(y>playerY){
                         direction="up";
                     }
                 }
@@ -183,7 +183,6 @@ public class Zombie extends Entity {
                 for (int i = 0; i < gamePanel.zombies.length; i++) {
                     if (gamePanel.zombies[i] == entity) {
                         gamePanel.zombies[i] = null;
-
                     }
                 }
             }
@@ -230,6 +229,7 @@ public class Zombie extends Entity {
                 }
             }
         }
+        image2=image;
         g2D.drawImage(image, x, y, null);
     }
 
