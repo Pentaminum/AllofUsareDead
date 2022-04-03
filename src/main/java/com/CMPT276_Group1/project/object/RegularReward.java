@@ -29,7 +29,7 @@ public class RegularReward extends ObjectSuper {
             e.printStackTrace();
         }
     }
-    public BufferedImage setImage(String imageName) {
+    /*public BufferedImage setImage(String imageName) {
         UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
         try {
@@ -39,5 +39,5 @@ public class RegularReward extends ObjectSuper {
             e.printStackTrace();
         }
         return image;
-    }
+    }*/
 }
