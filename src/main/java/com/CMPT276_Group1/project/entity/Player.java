@@ -53,14 +53,14 @@ public class Player extends Entity {
      * Setting player sprite
      */
     public void getPlayerImage() {
-        up1 = setUp("main_character_up_1");
-        up2 = setUp("main_character_up_2");
-        down1 = setUp("main_character_down_1");
-        down2 = setUp("main_character_down_2");
-        left1 = setUp("main_character_left_1");
-        left2 = setUp("main_character_left_2");
-        right1 = setUp("main_character_right_1");
-        right2 = setUp("main_character_right_2");
+        up1 = setImage("main_character_up_1");
+        up2 = setImage("main_character_up_2");
+        down1 = setImage("main_character_down_1");
+        down2 = setImage("main_character_down_2");
+        left1 = setImage("main_character_left_1");
+        left2 = setImage("main_character_left_2");
+        right1 = setImage("main_character_right_1");
+        right2 = setImage("main_character_right_2");
     }
 
     /**
@@ -68,7 +68,7 @@ public class Player extends Entity {
      * @param imageName a PNG file of the image
      * @return the image of the specified PNG
      */
-    public BufferedImage setUp(String imageName) {
+    public BufferedImage setImage(String imageName) {
         UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
         try {
@@ -192,7 +192,7 @@ public class Player extends Entity {
 
     /**
      * Draw the player sprite based on what direction the player is moving
-     * @param the 2D graphics parameter
+     * @param g2D 2D graphics parameter
      */
     public void draw(Graphics2D g2D) {
         BufferedImage image = null;
