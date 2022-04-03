@@ -34,7 +34,7 @@ public class AssetSetter {
         gamePanel.obj[3].y=3*gamePanel.tileSize;
         gamePanel.obj[4]=new SpecialReward(gamePanel);
         gamePanel.obj[4].x=8*gamePanel.tileSize;
-        gamePanel.obj[4].y=1*gamePanel.tileSize;
+        gamePanel.obj[4].y=gamePanel.tileSize;
 
         gamePanel.obj[5]=new Exit(gamePanel);
         gamePanel.obj[5].x=19*gamePanel.tileSize;

@@ -148,8 +148,6 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
 
-
-
             //Trap
             for (Trap trap : traps) {
                 if(trap != null){
