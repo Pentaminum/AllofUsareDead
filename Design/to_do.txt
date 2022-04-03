@@ -1,3 +1,6 @@
 Unit Testing
     Brendan - KeyHandler, AssetSetter, TileManager, Exit
     Integration - TileManager.draw(Graphics2D)
+    John - Player,Enemy,
+    Integration - Player.draw(Graphic2D)
+    Integration - Zombie.draw(Graphic2D)
