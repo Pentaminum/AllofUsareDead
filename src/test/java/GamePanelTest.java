@@ -33,7 +33,7 @@ public class GamePanelTest {
     }
 
     @Test
-    public void gameTest(){
+    public void gameplayTest(){
         JFrame window =new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
@@ -50,6 +50,21 @@ public class GamePanelTest {
         }
         R.keyPress(KeyEvent.VK_ENTER);
         R.keyRelease(KeyEvent.VK_ENTER);
+        try{
+            Thread.sleep(1000);
+
+        } catch (InterruptedException e) {
+        }
+        for(int i = 0; i <2; i++){
+            R.keyPress(KeyEvent.VK_P);
+            R.keyRelease(KeyEvent.VK_P);
+            try {
+                Thread.sleep(1000);
+
+            } catch (InterruptedException e) {
+            }
+        }
+        GP.gameState = GP.finishState;
         try{
             Thread.sleep(1000);
 
