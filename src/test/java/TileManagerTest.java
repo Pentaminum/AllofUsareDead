@@ -2,8 +2,8 @@ import com.CMPT276_Group1.project.*;
 import com.CMPT276_Group1.project.tile.Tile;
 import com.CMPT276_Group1.project.tile.TileManager;
 import org.junit.jupiter.api.*;
-
 import java.awt.event.*;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class TileManagerTest {
@@ -20,6 +20,18 @@ public class TileManagerTest {
     public void constructorTest(){
        TileManager TestTM = new TileManager(GP);
        assertNotNull(TestTM, "Check that the object is constructed");
+    }
+
+    @Test
+    public void setUpTest(){
+        assertThrows(IllegalArgumentException.class, ()->TM.setUp(0,"incorrectfilename.png", false)
+                , "Should throw an Illegal Argument Exception when given an invalid file name");
+        TM.setUp(0, "floor_1", false);
+        TM.setUp(1, "floor_2",false);
+        TM.setUp(2, "wall",true);
+        assertNotNull(TM.tile[0]);
+        assertNotNull(TM.tile[1]);
+        assertNotNull(TM.tile[2]);
     }
 
     @Test
