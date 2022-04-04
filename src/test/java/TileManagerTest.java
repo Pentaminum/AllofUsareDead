@@ -24,7 +24,7 @@ public class TileManagerTest {
 
     @Test
     public void setUpTest(){
-        assertThrows(IllegalArgumentException.class, ()->TM.setUp(0,"incorrectfilename.png", false)
+        assertThrows(IllegalArgumentException.class, ()->TM.setUp(0,"incorrect-filename.png", false)
                 , "Should throw an Illegal Argument Exception when given an invalid file name");
         TM.setUp(0, "floor_1", false);
         TM.setUp(1, "floor_2",false);
@@ -46,6 +46,8 @@ public class TileManagerTest {
     public void loadMapTest(){
         TM.loadMap("/maps/map_1.txt");
         assertNotNull(TM.mapTileNum);
+        assertThrows(IllegalArgumentException.class, ()->TM.loadMap("incorrect-filename.txt")
+                , "Should throw an Illegal Argument Exception when given an invalid file name");
     }
 
 
