@@ -135,13 +135,17 @@ public class ZombieTest extends JPanel {
         zombie.x=GP.tileSize;
         zombie.y=4*GP.tileSize;
         zombie.spriteCounter=19;
+        zombie.spriteNum=2;
         zombie.setAction();
         assertEquals("up",zombie.direction,"asserts that zombie going up toward player once distance<=3tile");
         assertEquals(3,zombie.speed,"asserts that zombie speeds up when player is in distance");
+        assertEquals(1,zombie.spriteNum,"asserts that zombie sprite is changing");
         zombie.y=5*GP.tileSize;
         zombie.spriteCounter=19;
+        zombie.spriteNum=2;
         zombie.setAction();
         assertEquals(2,zombie.speed,"asserts that zombie slows down when player is out of range");
+        assertEquals(1,zombie.spriteNum,"asserts that zombie sprite is changing overtime");
 
         zombie.x=GP.tileSize;
         zombie.y=GP.tileSize;
@@ -153,8 +157,10 @@ public class ZombieTest extends JPanel {
         assertEquals(3,zombie.speed,"asserts that zombie speeds up when player is in distance");
         GP.player.y=5*GP.tileSize;
         zombie.spriteCounter=19;
+        zombie.spriteNum=1;
         zombie.setAction();
         assertEquals(2,zombie.speed,"asserts that zombie slows down when player is out of range");
+        assertEquals(2,zombie.spriteNum,"asserts that zombie sprite is changing");
 
         zombie.x=GP.tileSize;
         zombie.y=GP.tileSize;

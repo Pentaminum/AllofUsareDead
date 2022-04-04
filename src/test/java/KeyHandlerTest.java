@@ -1,6 +1,7 @@
 import com.CMPT276_Group1.project.*;
 import org.junit.jupiter.api.*;
 
+import java.awt.*;
 import java.awt.event.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,6 +10,7 @@ public class KeyHandlerTest {
 
     private KeyHandler KH;
     private GamePanel GP;
+
     @BeforeEach
     void setUp() {
         GP = new GamePanel();
