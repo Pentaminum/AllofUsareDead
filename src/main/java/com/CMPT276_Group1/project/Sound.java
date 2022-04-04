@@ -8,7 +8,7 @@ import java.net.*;
  */
 public class Sound {
     Clip clip;
-    URL[] soundURL =new URL[30];
+    URL[] soundURL =new URL[6];
 
     /**
      * Constructor for the sound class that selects the sound effects and theme music
@@ -20,6 +20,22 @@ public class Sound {
         soundURL[3]=getClass().getResource("/sound/fanfare.wav");
         soundURL[4]=getClass().getResource("/sound/title_screen_music.wav");
         soundURL[5]=getClass().getResource("/sound/defeated.wav");
+    }
+
+    /**
+     * Wrapper for the clip isOpen function
+     * @return boolean for whether there is an open clip or not
+     */
+    public boolean isOpen(){
+        return clip.isOpen();
+    }
+
+    /**
+     * Wrapper for the clip isRunning function
+     * @return boolean for whether the clip is playing or not
+     */
+    public boolean isPlaying(){
+        return clip.isRunning();
     }
 
     /**
