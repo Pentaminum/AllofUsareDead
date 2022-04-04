@@ -86,6 +86,5 @@ public class PlayerTest {
         player.y=7*GP.tileSize;
         player.update();
         assertTrue(player.collisionOn,"asserts that player will detect trap once collide");
-
     }
 }
