@@ -1,12 +1,9 @@
 import com.CMPT276_Group1.project.GamePanel;
-import com.CMPT276_Group1.project.UtilityTool;
 import com.CMPT276_Group1.project.object.RegularReward;
 import org.junit.jupiter.api.*;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
