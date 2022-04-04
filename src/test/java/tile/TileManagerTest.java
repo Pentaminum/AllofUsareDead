@@ -1,5 +1,6 @@
+package tile;
+
 import com.CMPT276_Group1.project.*;
-import com.CMPT276_Group1.project.tile.Tile;
 import com.CMPT276_Group1.project.tile.TileManager;
 import org.junit.jupiter.api.*;
 import java.awt.event.*;
@@ -46,9 +47,6 @@ public class TileManagerTest {
     public void loadMapTest(){
         TM.loadMap("/maps/map_1.txt");
         assertNotNull(TM.mapTileNum);
-        assertThrows(IllegalArgumentException.class, ()->TM.loadMap("incorrect-filename.txt")
-                , "Should throw an Illegal Argument Exception when given an invalid file name");
     }
-
 
 }

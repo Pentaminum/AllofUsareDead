@@ -76,6 +76,7 @@ public class Player extends Entity {
             image = utilityTool.scaleImage(image, gamePanel.tileSize, gamePanel.tileSize);
         } catch (IOException e) {
             e.printStackTrace();
+
         }
         return image;
     }
@@ -179,8 +180,12 @@ public class Player extends Entity {
         if(i!=999){
             if(hasSpecialReward==0){
                 if(!invincible){
-                    life-=1;
-                    invincible=true;
+                    if(life<=0){
+                        gamePanel.gameState= gamePanel.finishState;
+                    }else{
+                        life-=1;
+                        invincible=true;
+                    }
                 }
             }else{
                 hasSpecialReward--;

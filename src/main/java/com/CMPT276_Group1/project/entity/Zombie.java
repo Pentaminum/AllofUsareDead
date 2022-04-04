@@ -170,23 +170,23 @@ public class Zombie extends Entity {
      * @param entity An Entity object to test whether the zombie is still
      *               an entity
      */
-    public void contactPlayer(boolean isPlayer, Entity entity) {
-        if (isPlayer) {
-            if (gamePanel.player.hasSpecialReward == 0) {
-                if (!gamePanel.player.invincible) {
-                    gamePanel.player.life -= 1;
-                    gamePanel.player.invincible = true;
-                }
-            } else {
-                gamePanel.player.hasSpecialReward--;
-                gamePanel.player.zombieDefeated++;
-                for (int i = 0; i < gamePanel.zombies.length; i++) {
-                    if (gamePanel.zombies[i] == entity) {
-                        gamePanel.zombies[i] = null;
+    public void contactPlayer(boolean isPlayer, Entity entity){
+            if (isPlayer) {
+                if (gamePanel.player.hasSpecialReward == 0) {
+                    if (!gamePanel.player.invincible) {
+                        gamePanel.player.life -= 1;
+                        gamePanel.player.invincible = true;
+                    }
+                } else {
+                    gamePanel.player.hasSpecialReward--;
+                    gamePanel.player.zombieDefeated++;
+                    for (int i = 0; i < gamePanel.zombies.length; i++) {
+                        if (gamePanel.zombies[i] == entity) {
+                            gamePanel.zombies[i] = null;
+                        }
                     }
                 }
             }
-        }
     }
 
     /**

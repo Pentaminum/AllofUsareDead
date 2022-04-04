@@ -1,3 +1,5 @@
+package object;
+
 import com.CMPT276_Group1.project.*;
 import com.CMPT276_Group1.project.object.Exit;
 import org.junit.jupiter.api.*;
