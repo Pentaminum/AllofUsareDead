@@ -64,7 +64,7 @@ public class GamePanelTest {
             } catch (InterruptedException e) {
             }
         }
-        GP.gameState = GP.finishState;
+        GP.player.life = 0;
         try{
             Thread.sleep(1000);
 
