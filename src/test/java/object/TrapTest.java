@@ -38,41 +38,8 @@ public class TrapTest {
     @Test
     public void testHit() {
         assertEquals(5, GP.traps.length, "asserts that the number of traps is correct");
-        for(int i=0;i<1;i++)
-        {
-            if(i == 0) {
-                GP.player.x = 6 * GP.tileSize;
-                GP.player.y = 7 * GP.tileSize;
-                GP.player.direction = "left";
-                GP.traps[i].checkEvent(i);
-                //GP.traps[i].hit(6/GP.tileSize,7/GP.tileSize
-                assertEquals(5, GP.player.life, "asserts that trap hit was spotted in the first trap");
-            }
-            /*
-            if(i == 0)
-            {
-                assertTrue(GP.traps[i].hit(6/GP.tileSize,7/GP.tileSize, "ed"), "asserts that trap hit was spotted in the first trap");
-            }
-            else if(i == 1){
-                assertTrue(GP.traps[i].hit(11/GP.tileSize,12/GP.tileSize, "asserts that trap hit was spotted");
-            }
-            else if(i == 2){
-                assertTrue(GP.traps[i].hit(13/GP.tileSize,5/GP.tileSize, "asserts that trap hit was spotted");
-            }
-            else if(i == 3){
-                assertTrue(GP.traps[i].hit(4/GP.tileSize,9/GP.tileSize, "asserts that trap hit was spotted");
-            }
-            else if(i == 4){
-                assertTrue(GP.traps[i].hit(17/GP.tileSize,12/GP.tileSize, "asserts that trap hit was spotted");
-            }
-             */
-        }
     }
 
-    @Test
-    public void testDamage() {
-
-    }
 
 }
 
