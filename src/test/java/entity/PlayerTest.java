@@ -167,5 +167,48 @@ public class PlayerTest {
 
     }
 
+    @Test
+    public void updateTest(){
+        KH.downPressed=true;
+        player.update();
+        KH.downPressed=false;
+        assertEquals(player.direction,"down","asserts that player is going the right direction");
 
+        KH.upPressed=true;
+        player.update();
+        KH.upPressed=false;
+        assertEquals("up",player.direction,"asserts player is going up");
+
+        KH.leftPressed=true;
+        player.update();
+        KH.leftPressed=false;
+        assertEquals("left",player.direction,"asserts that player is going left");
+
+        KH.rightPressed=true;
+        player.update();
+        KH.rightPressed=false;
+        assertEquals("right",player.direction,"asserts that player is going right");
+
+        player.x=GP.tileSize;
+        player.y=GP.tileSize;
+        player.update();
+        assertFalse(player.collisionOn,"asserts that player is not colliding with anything when initialized");
+        player.x=GP.tileSize-player.solidArea.x-1;
+        KH.leftPressed=true;
+        player.update();
+        KH.leftPressed=false;
+        assertTrue(player.collisionOn,"asserts that player will detect wall collision");
+        player.x=8*GP.tileSize;
+        player.y=8*GP.tileSize-(GP.tileSize-player.solidArea.height)-player.solidArea.x-1;
+        player.update();
+        assertTrue(player.collisionOn,"asserts that player will detect zombie once collide");
+        player.x=GP.tileSize;
+        player.y=14*GP.tileSize;
+        player.update();
+        assertTrue(player.collisionOn,"asserts that player will detect object once collide");
+        player.x=6*GP.tileSize+GP.traps[0].solidArea.x+GP.traps[0].solidArea.width-1;
+        player.y=7*GP.tileSize;
+        player.update();
+        assertTrue(player.collisionOn,"asserts that player will detect trap once collide");
+    }
 }
