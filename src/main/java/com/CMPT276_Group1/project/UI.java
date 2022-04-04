@@ -13,11 +13,14 @@ import java.io.*;
 public class UI {
     GamePanel gamePanel;
     Font arial_40, arial_80B;
-    BufferedImage studentImage;
-    BufferedImage heart_full,heart_half,heart_blank;
+    public BufferedImage studentImage;
+    public BufferedImage heart_full,heart_half,heart_blank;
+    public BufferedImage image1,image2;
     private Graphics2D graphic2D;
     public int commandNum=0;
     public int score=0;
+    public int x=0,y=0;
+    public String text="";
 
     /**
      * Constructor for the UI
@@ -76,7 +79,6 @@ public class UI {
      * Draws the title screen part by part onto the window
      */
     public void drawTitleScreen(){
-        BufferedImage image1=null,image2=null;
         try{
             image1= ImageIO.read(getClass().getResourceAsStream("/symbol/enterSymbol.png"));
             image2= ImageIO.read(getClass().getResourceAsStream("/background/title_background.png"));
@@ -89,9 +91,9 @@ public class UI {
 
         //Title name
         graphic2D.setFont(graphic2D.getFont().deriveFont(Font.BOLD,96F));
-        String text="All of Us are Dead";
-        int x=getXForCenterText(text);
-        int y=gamePanel.tileSize*3;
+        text="All of Us are Dead";
+        x=getXForCenterText(text);
+        y=gamePanel.tileSize*3;
 
         //Shadow
         graphic2D.setColor(Color.gray);
@@ -172,7 +174,6 @@ public class UI {
      * Draw the finish screen for either victory or defeat
      */
     public void drawFinishScreen(){
-        BufferedImage image1=null,image2=null;
         try{
             image1= ImageIO.read(getClass().getResourceAsStream("/symbol/enterSymbol.png"));
             image2= ImageIO.read(getClass().getResourceAsStream("/background/title_background.png"));

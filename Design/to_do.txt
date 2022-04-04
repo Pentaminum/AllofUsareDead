@@ -1,7 +1,7 @@
 Unit Testing
     Brendan - KeyHandler, AssetSetter, TileManager, Exit
     Integration - TileManager.draw(Graphics2D)
-    John - Player,Enemy, UtilityTool
+    John - Player, Enemy, UtilityTool, UI
     Integration - Player.draw(Graphic2D)
     Integration - Player.update()
     @Test
@@ -46,4 +46,5 @@ Unit Testing
             zombie.update();
             assertTrue(zombie.collisionOn,"asserts that zombie will detect player once collide");
         }
+    Integration - UI.draw(Graphic2D)
     Allen - OBJ_Heart, RegularReward, SpecialReward, Trap
