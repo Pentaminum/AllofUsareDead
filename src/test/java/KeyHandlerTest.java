@@ -43,7 +43,12 @@ public class KeyHandlerTest {
         assertTrue(KH.downPressed, "When the S key is pressed, downPressed should be true");
         KH.keyPressedAction(KeyEvent.VK_D);
         assertTrue(KH.rightPressed, "When the D key is pressed, rightPressed should be true");
-
+        KH.keyPressedAction(KeyEvent.VK_P);
+        assertTrue(GP.gameState == GP.pauseState
+                , "When the P key is pressed, game should pause");
+        KH.keyPressedAction(KeyEvent.VK_P);
+        assertTrue(GP.gameState == GP.playState
+                , "When the P key is pressed, game should unpause");
     }
 
     @Test

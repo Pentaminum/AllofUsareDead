@@ -33,6 +33,7 @@ public class SoundTest {
             throw new RuntimeException("Unexpected Interrupt", e);
         }
         assertTrue(S.isPlaying(), "Clip should be playing");
+        S.stop();
     }
 
     @Test

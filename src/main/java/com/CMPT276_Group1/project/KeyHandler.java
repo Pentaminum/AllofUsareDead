@@ -101,10 +101,6 @@ public class KeyHandler implements KeyListener {
                 gamePanel.player=new Player(gamePanel, gamePanel.keyHandler);
             }
         }
-        //Debug
-        if(code==KeyEvent.VK_T){
-            checkDrawTime= !checkDrawTime;
-        }
     }
 
     /**
