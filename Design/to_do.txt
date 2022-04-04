@@ -3,5 +3,47 @@ Unit Testing
     Integration - TileManager.draw(Graphics2D)
     John - Player,Enemy, UtilityTool
     Integration - Player.draw(Graphic2D)
+    Integration - Player.update()
+    @Test
+        public void updateTest(){
+            KH.downPressed=true;
+            player.update();
+            assertEquals(player.direction,"down","asserts that player is going the right direction");
+            assertFalse(player.collisionOn,"asserts that player is not colliding with anything when initialized");
+            player.x=GP.tileSize-player.solidArea.x-1;
+            player.y=2*GP.tileSize;
+            player.update();
+            assertTrue(player.collisionOn,"asserts that player will detect wall collision");
+            player.x=8*GP.tileSize;
+            player.y=8*GP.tileSize-(GP.tileSize-player.solidArea.height)-player.solidArea.x-1;
+            player.update();
+            assertTrue(player.collisionOn,"asserts that player will detect zombie once collide");
+            player.x=GP.tileSize;
+            player.y=14*GP.tileSize;
+            player.update();
+            assertTrue(player.collisionOn,"asserts that player will detect object once collide");
+            player.x=6*GP.tileSize+GP.traps[0].solidArea.x+GP.traps[0].solidArea.width-1;
+            player.y=7*GP.tileSize;
+            player.update();
+            assertTrue(player.collisionOn,"asserts that player will detect trap once collide");
+        }
     Integration - Zombie.draw(Graphic2D)
+    Integration - Zombie.update()
+    @Test
+        public void updateTest(){
+            zombie.update();
+            assertFalse(zombie.collisionOn,"asserts that zombie is not colliding with anything when initialized");
+            zombie.x=GP.tileSize-zombie.solidArea.x-1;
+            zombie.y=2*GP.tileSize;
+            zombie.update();
+            assertTrue(zombie.collisionOn,"asserts that zombie will detect wall collision");
+            zombie.x=8*GP.tileSize;
+            zombie.y=8*GP.tileSize-(GP.tileSize-zombie.solidArea.height)-zombie.solidArea.x-1;
+            zombie.update();
+            assertTrue(zombie.collisionOn,"asserts that zombie will detect other zombie once collide");
+            zombie.x=GP.tileSize;
+            zombie.y=2*GP.tileSize-(GP.tileSize-zombie.solidArea.height)-GP.player.solidArea.x-1;
+            zombie.update();
+            assertTrue(zombie.collisionOn,"asserts that zombie will detect player once collide");
+        }
     Allen - OBJ_Heart, RegularReward, SpecialReward, Trap

@@ -1,3 +1,5 @@
+package tile;
+
 import com.CMPT276_Group1.project.*;
 import com.CMPT276_Group1.project.tile.TileManager;
 import org.junit.jupiter.api.*;
