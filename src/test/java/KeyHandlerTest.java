@@ -70,6 +70,7 @@ public class KeyHandlerTest {
         assertDoesNotThrow(()->KH.keyPressedAction(KeyEvent.VK_ENTER), "Do not throw an exception when exiting");
     }
 
+    @Test
     public void enterFinishStateTest(){
         GP.gameState = GP.finishState;
         KH.keyPressedAction(KeyEvent.VK_ENTER);
