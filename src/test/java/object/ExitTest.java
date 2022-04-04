@@ -12,6 +12,7 @@ public class ExitTest {
     private GamePanel GP;
     @BeforeEach
     void setUp(){
+        GP = new GamePanel();
         E = new Exit(GP);
     }
     @Test
