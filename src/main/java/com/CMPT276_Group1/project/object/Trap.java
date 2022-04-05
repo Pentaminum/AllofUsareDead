@@ -51,6 +51,7 @@ public class Trap extends ObjectSuper {
             trapDamage(gamePanel.playState, i, "down");
         }
     }
+
     public boolean hit(int eventCol, int eventRow, String reqDirection){
         boolean hit=false;
         gamePanel.player.solidArea.x=gamePanel.player.x+gamePanel.player.solidArea.x;

@@ -23,12 +23,12 @@ public class GamePanelTest {
         GP.gameState = GP.playState;
         try{
             Thread.sleep(1000);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException ignored) {
         }
         GP.gameState = GP.pauseState;
         try{
             Thread.sleep(1000);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException ignored) {
         }
     }
 
@@ -65,6 +65,17 @@ public class GamePanelTest {
             }
         }
         GP.player.life = 0;
+        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        try{
+            Thread.sleep(1000);
+
+        } catch (InterruptedException e) {
+        }
+        R.keyPress(KeyEvent.VK_ENTER);
+        R.keyRelease(KeyEvent.VK_ENTER);
+        GP.ui.commandNum=1;
+        R.keyPress(KeyEvent.VK_ENTER);
+        R.keyRelease(KeyEvent.VK_ENTER);
         try{
             Thread.sleep(1000);
 
