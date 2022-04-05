@@ -6,7 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
-
+import static org.junit.jupiter.api.Assertions.*;
 public class GamePanelTest {
     private GamePanel GP;
     private Robot R;
@@ -66,6 +66,7 @@ public class GamePanelTest {
         }
         GP.player.life = 0;
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         try{
             Thread.sleep(1000);
 
@@ -78,8 +79,8 @@ public class GamePanelTest {
         R.keyRelease(KeyEvent.VK_ENTER);
         try{
             Thread.sleep(1000);
-
         } catch (InterruptedException e) {
         }
     }
+
 }
