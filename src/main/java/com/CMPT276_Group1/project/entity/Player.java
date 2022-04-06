@@ -156,6 +156,16 @@ public class Player extends Entity {
                     gamePanel.obj[i] = null;
                     gamePanel.playSoundEffect(1);
                 }
+                case "Regular Reward 2"->{
+                    hasRegularReward++;
+                    gamePanel.obj[i] = null;
+                    gamePanel.playSoundEffect(1);
+                }
+                case "Regular Reward 3"->{
+                    hasRegularReward++;
+                    gamePanel.obj[i] = null;
+                    gamePanel.playSoundEffect(1);
+                }
                 case "Special Reward" -> {
                     hasSpecialReward++;
                     gamePanel.obj[i] = null;

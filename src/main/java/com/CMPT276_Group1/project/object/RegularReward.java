@@ -6,6 +6,7 @@ import com.CMPT276_Group1.project.object.*;
 import javax.imageio.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.*;
 
 import static javax.imageio.ImageIO.read;
 
@@ -14,7 +15,6 @@ import static javax.imageio.ImageIO.read;
  * player has to collect in order to win the game.
  */
 public class RegularReward extends ObjectSuper {
-    GamePanel gamePanel;
     /**
      * Read and scale the regular reward PNG file to get images of
      * the students.
@@ -29,15 +29,4 @@ public class RegularReward extends ObjectSuper {
             e.printStackTrace();
         }
     }
-    /*public BufferedImage setImage(String imageName) {
-        UtilityTool utilityTool = new UtilityTool();
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/" + imageName + ".png"));
-            image = utilityTool.scaleImage(image, gamePanel.tileSize, gamePanel.tileSize);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
-    }*/
 }

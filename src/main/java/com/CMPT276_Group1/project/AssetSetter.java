@@ -22,10 +22,10 @@ public class AssetSetter {
         gamePanel.obj[0]=new RegularReward(gamePanel);
         gamePanel.obj[0].x=gamePanel.tileSize;
         gamePanel.obj[0].y=14*gamePanel.tileSize;
-        gamePanel.obj[1]=new RegularReward(gamePanel);
+        gamePanel.obj[1]=new RegularReward2(gamePanel);
         gamePanel.obj[1].x= 10*gamePanel.tileSize;
         gamePanel.obj[1].y=2*gamePanel.tileSize;
-        gamePanel.obj[2]=new RegularReward(gamePanel);
+        gamePanel.obj[2]=new RegularReward3(gamePanel);
         gamePanel.obj[2].x=5*gamePanel.tileSize;
         gamePanel.obj[2].y=7*gamePanel.tileSize;
 

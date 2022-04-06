@@ -201,7 +201,7 @@ public class UI {
         graphic2D.setFont(graphic2D.getFont().deriveFont(Font.BOLD,48F));
 
         if(gamePanel.player.life==0){
-            text="Defeat";
+            text="Game Over!!!";
             x=getXForCenterText(text);
             y+=gamePanel.tileSize*2;
             graphic2D.drawString(text,x,y);
