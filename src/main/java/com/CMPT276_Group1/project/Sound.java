@@ -8,7 +8,7 @@ import java.net.*;
  */
 public class Sound {
     Clip clip;
-    URL[] soundURL =new URL[6];
+    URL[] soundURL =new URL[9];
 
     /**
      * Constructor for the sound class that selects the sound effects and theme music
@@ -16,10 +16,13 @@ public class Sound {
     public Sound(){
         soundURL[0]=getClass().getResource("/sound/Dark-theme.wav");
         soundURL[1]=getClass().getResource("/sound/pick_up_regular_reward.wav");
-        soundURL[2]=getClass().getResource("/sound/pick_up_special_reward.wav");
-        soundURL[3]=getClass().getResource("/sound/fanfare.wav");
-        soundURL[4]=getClass().getResource("/sound/title_screen_music.wav");
-        soundURL[5]=getClass().getResource("/sound/defeated.wav");
+        soundURL[2]=getClass().getResource("/sound/pick_up_regular_reward_2.wav");
+        soundURL[3]=getClass().getResource("/sound/pick_up_regular_reward_3.wav");
+        soundURL[4]=getClass().getResource("/sound/pick_up_special_reward.wav");
+        soundURL[5]=getClass().getResource("/sound/fanfare.wav");
+        soundURL[6]=getClass().getResource("/sound/title_screen_music.wav");
+        soundURL[7]=getClass().getResource("/sound/defeated.wav");
+        soundURL[8]=getClass().getResource("/sound/zombie_hit.wav");
     }
 
     /**

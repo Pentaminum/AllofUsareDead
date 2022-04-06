@@ -159,22 +159,22 @@ public class Player extends Entity {
                 case "Regular Reward 2"->{
                     hasRegularReward++;
                     gamePanel.obj[i] = null;
-                    gamePanel.playSoundEffect(1);
+                    gamePanel.playSoundEffect(2);
                 }
                 case "Regular Reward 3"->{
                     hasRegularReward++;
                     gamePanel.obj[i] = null;
-                    gamePanel.playSoundEffect(1);
+                    gamePanel.playSoundEffect(3);
                 }
                 case "Special Reward" -> {
                     hasSpecialReward++;
                     gamePanel.obj[i] = null;
-                    gamePanel.playSoundEffect(2);
+                    gamePanel.playSoundEffect(4);
                 }
                 case "Exit" -> {
                     if (hasRegularReward == 3) {
                         gamePanel.stopMusic();
-                        gamePanel.playSoundEffect(3);
+                        gamePanel.playSoundEffect(5);
                         gamePanel.gameState=gamePanel.finishState;
                     }
                 }
@@ -200,6 +200,7 @@ public class Player extends Entity {
             }else{
                 hasSpecialReward--;
                 zombieDefeated++;
+                gamePanel.playSoundEffect(8);
                 gamePanel.zombies[i]=null;
             }
         }

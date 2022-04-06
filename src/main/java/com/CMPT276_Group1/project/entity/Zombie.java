@@ -182,6 +182,7 @@ public class Zombie extends Entity {
                     gamePanel.player.zombieDefeated++;
                     for (int i = 0; i < gamePanel.zombies.length; i++) {
                         if (gamePanel.zombies[i] == entity) {
+                            gamePanel.playSoundEffect(8);
                             gamePanel.zombies[i] = null;
                         }
                     }

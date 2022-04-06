@@ -59,7 +59,7 @@ public class UI {
             if(gamePanel.player.life==0){
                 gamePanel.gameState=gamePanel.finishState;
                 gamePanel.stopMusic();
-                gamePanel.playSoundEffect(5);
+                gamePanel.playSoundEffect(7);
             }
         }
 
