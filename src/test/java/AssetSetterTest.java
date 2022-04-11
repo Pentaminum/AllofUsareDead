@@ -25,7 +25,7 @@ public class AssetSetterTest {
     public void setObjectTest(){
         AS.setObject();
         assertNotNull(GP.obj[0], "Check that object 0 was set");
-        assertEquals(GP.obj[0].x,1*GP.tileSize, "Check that object 0 is in the correct x position");
+        assertEquals(GP.obj[0].x,GP.tileSize, "Check that object 0 is in the correct x position");
         assertEquals(GP.obj[0].y,14*GP.tileSize, "Check that object 0 is in the correct y position");
         assertNotNull(GP.obj[1], "Check that object 1 was set");
         assertEquals(GP.obj[1].x,10*GP.tileSize, "Check that object 1 is in the correct x position");
@@ -38,7 +38,7 @@ public class AssetSetterTest {
         assertEquals(GP.obj[3].y,3*GP.tileSize, "Check that object 3 is in the correct y position");
         assertNotNull(GP.obj[4], "Check that object 4 was set");
         assertEquals(GP.obj[4].x,8*GP.tileSize, "Check that object 4 is in the correct x position");
-        assertEquals(GP.obj[4].y,1*GP.tileSize, "Check that object 4 is in the correct y position");
+        assertEquals(GP.obj[4].y,GP.tileSize, "Check that object 4 is in the correct y position");
         assertNotNull(GP.obj[5], "Check that object 5 was set");
         assertEquals(GP.obj[5].x,19*GP.tileSize, "Check that object 5 is in the correct x position");
         assertEquals(GP.obj[5].y,14*GP.tileSize, "Check that object 5 is in the correct y position");
