@@ -21,9 +21,6 @@ public class RegularRewardTest {
     }
     @Test
     public void testImage() {
-        /*File file = new File("regular_reward.png");
-        assertNotNull(file,"asserts that the image file is not null");
-        assertEquals("regular_reward.png",file.getName(),"asserts that the image file is correct");*/
         BufferedImage test;
         try {
             test = ImageIO.read(getClass().getResourceAsStream("/objects/regular_reward.png"));
