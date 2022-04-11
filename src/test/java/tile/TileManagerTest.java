@@ -3,8 +3,6 @@ package tile;
 import com.CMPT276_Group1.project.*;
 import com.CMPT276_Group1.project.tile.TileManager;
 import org.junit.jupiter.api.*;
-import java.awt.event.*;
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class TileManagerTest {

@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.image.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ZombieTest extends JPanel {
     private GamePanel GP;

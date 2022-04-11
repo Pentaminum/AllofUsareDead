@@ -2,10 +2,8 @@ package com.CMPT276_Group1.project.entity;
 
 import com.CMPT276_Group1.project.*;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Random;
 
 /**
