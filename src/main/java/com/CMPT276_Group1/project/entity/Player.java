@@ -17,7 +17,7 @@ public class Player extends Entity {
     public int hasRegularReward = 0;
     public int hasSpecialReward = 0;
     public int zombieDefeated=0;
-
+    UtilityTool tool=new UtilityTool();
     /**
      * Constructor for Player class
      * @param gamePanel the current gamePanel describing the game state
@@ -26,6 +26,7 @@ public class Player extends Entity {
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
+        name="Player";
 
         solidArea = new Rectangle(8, 16, 32, 32);
         solidAreaDefaultX = solidArea.x;
@@ -69,11 +70,10 @@ public class Player extends Entity {
      * @return the image of the specified PNG
      */
     public BufferedImage setImage(String imageName) {
-        UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
-            image = utilityTool.scaleImage(image, gamePanel.tileSize, gamePanel.tileSize);
+            image = tool.scaleImage(image, gamePanel.tileSize, gamePanel.tileSize);
         } catch (IOException e) {
             e.printStackTrace();
 
@@ -114,14 +114,7 @@ public class Player extends Entity {
             contactZombie(monsterIndex);
 
             //if collision is false player can move
-            if (!collisionOn) {
-                switch (direction) {
-                    case "up" -> y -= speed;
-                    case "down" -> y += speed;
-                    case "left" -> x -= speed;
-                    case "right" -> x += speed;
-                }
-            }
+            tool.moveConsideringCollision(this);
 
             spriteCounter++;
             if (spriteCounter > 10) {

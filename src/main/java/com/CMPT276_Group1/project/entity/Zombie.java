@@ -15,6 +15,7 @@ import java.util.Random;
  */
 public class Zombie extends Entity {
     GamePanel gamePanel;
+    UtilityTool tool=new UtilityTool();
 
     /**
      * The constructor that initializes the features of the zombies
@@ -42,11 +43,10 @@ public class Zombie extends Entity {
      * @return the image of the specified PNG
      */
     public BufferedImage setUp(String imageName) {
-        UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/zombie/" + imageName + ".png"));
-            image = utilityTool.scaleImage(image, gamePanel.tileSize, gamePanel.tileSize);
+            image = tool.scaleImage(image, gamePanel.tileSize, gamePanel.tileSize);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -90,14 +90,7 @@ public class Zombie extends Entity {
         boolean attack = gamePanel.collisionChecker.checkPlayer(this);
         contactPlayer(attack, this);
 
-        if (!collisionOn) {
-            switch (direction) {
-                case "up" -> y -= speed;
-                case "down" -> y += speed;
-                case "left" -> x -= speed;
-                case "right" -> x += speed;
-            }
-        }
+        tool.moveConsideringCollision(this);
     }
 
     /**
