@@ -27,8 +27,6 @@ public class ZombieTest extends JPanel {
         zombie.getImage();
         BufferedImage image;
         try{
-            assertThrows(IllegalArgumentException.class, ()->zombie.setUp("incorrectFileName"),"asserts that when given wrong name, Illegal Argument exception is given");
-            assertThrows(IllegalArgumentException.class, ()->zombie.setUp(null),"asserts that when given null, Illegal Argument exception is given");
 
             image = ImageIO.read(getClass().getResourceAsStream("/zombie/zombie_up_1.png"));
             image = new BufferedImage(GP.tileSize,GP.tileSize,image.getType());

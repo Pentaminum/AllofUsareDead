@@ -76,9 +76,10 @@ public class UI {
     }
 
     /**
-     * Draws the title screen part by part onto the window
+     * Preparing the screen to draw either the title screen or finish screen. This code was duplicated among two methods
+     * so we turned it into its own method
      */
-    public void drawTitleScreen(){
+    public void prepareScreen(){
         try{
             image1= ImageIO.read(getClass().getResourceAsStream("/symbol/enterSymbol.png"));
             image2= ImageIO.read(getClass().getResourceAsStream("/background/title_background.png"));
@@ -88,9 +89,14 @@ public class UI {
         graphic2D.setColor(new Color(0,0,0));
         graphic2D.drawImage(image2,0,0,gamePanel.screenWidth,gamePanel.screenHeight,null);
 
-
-        //Title name
+        //Setting font
         graphic2D.setFont(graphic2D.getFont().deriveFont(Font.BOLD,96F));
+    }
+    /**
+     * Draws the title screen part by part onto the window
+     */
+    public void drawTitleScreen(){
+        prepareScreen();
         text="All of Us are Dead";
         x=getXForCenterText(text);
         y=gamePanel.tileSize*3;
@@ -174,18 +180,7 @@ public class UI {
      * Draw the finish screen for either victory or defeat
      */
     public void drawFinishScreen(){
-        try{
-            image1= ImageIO.read(getClass().getResourceAsStream("/symbol/enterSymbol.png"));
-            image2= ImageIO.read(getClass().getResourceAsStream("/background/title_background.png"));
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-
-        graphic2D.setColor(new Color(0,0,0));
-        graphic2D.drawImage(image2,0,0,gamePanel.screenWidth,gamePanel.screenHeight,null);
-
-        //Title name
-        graphic2D.setFont(graphic2D.getFont().deriveFont(Font.BOLD,96F));
+        prepareScreen();
         String text="All of Us are Dead";
         int x=getXForCenterText(text);
         int y=gamePanel.tileSize*3;

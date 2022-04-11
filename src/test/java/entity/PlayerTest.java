@@ -14,28 +14,28 @@ public class PlayerTest {
     private KeyHandler KH;
     private GamePanel GP;
     private Player player;
+    private UtilityTool tool;
     @BeforeEach
     public void setUp(){
         GP=new GamePanel();
         KH=new KeyHandler(GP);
         player=new Player(GP,KH);
+        tool=new UtilityTool();
         GP.setupGameObject();
     }
 
     @Test
     public void getPlayerImageTest(){
-        BufferedImage up1 = player.setImage("main_character_up_1");
-        BufferedImage up2 = player.setImage("main_character_up_2");
-        BufferedImage down1 = player.setImage("main_character_down_1");
-        BufferedImage down2 = player.setImage("main_character_down_2");
-        BufferedImage left1 = player.setImage("main_character_left_1");
-        BufferedImage left2 = player.setImage("main_character_left_2");
-        BufferedImage right1 = player.setImage("main_character_right_1");
-        BufferedImage right2 = player.setImage("main_character_right_2");
+        BufferedImage down1 = tool.setUp("main_character_down_1",GP,player);
+        BufferedImage down2 = tool.setUp("main_character_down_2",GP,player);
+        BufferedImage left1 = tool.setUp("main_character_left_1",GP,player);
+        BufferedImage left2 = tool.setUp("main_character_left_2",GP,player);
+        BufferedImage right1 = tool.setUp("main_character_right_1",GP,player);
+        BufferedImage right2 = tool.setUp("main_character_right_2",GP,player);
+        BufferedImage up1 = tool.setUp("main_character_up_1",GP,player);
+        BufferedImage up2 = tool.setUp("main_character_up_2",GP,player);
         BufferedImage image;
         try{
-            assertThrows(IllegalArgumentException.class, ()->player.setImage("incorrectFileName"),"asserts that when given wrong name, Illegal Argument exception is given");
-            assertThrows(IllegalArgumentException.class, ()->player.setImage(null),"asserts that when given null, Illegal Argument exception is given");
 
             image = ImageIO.read(getClass().getResourceAsStream("/player/main_character_up_1.png"));
             image = new BufferedImage(GP.tileSize,GP.tileSize,image.getType());

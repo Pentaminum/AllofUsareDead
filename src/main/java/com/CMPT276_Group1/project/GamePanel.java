@@ -119,7 +119,7 @@ public class GamePanel extends JPanel implements Runnable {
                     zombie.update();
                 }
             }
-        } else if (gameState == pauseState) {}
+        }
     }
 
     /**
