@@ -6,7 +6,16 @@ import java.io.*;
 
 import static javax.imageio.ImageIO.read;
 
+/**
+ * The third regular reward class. One of the student around the map that the
+ * player has to collect in order to win the game.
+ */
 public class RegularReward3 extends RegularReward{
+    /**
+     * Read and scale the regular reward PNG file to get images of
+     * the student.
+     * @param gamePanel the current gamePanel describing the game state
+     */
     public RegularReward3(GamePanel gamePanel){
         super(gamePanel);
         name="Regular Reward 3";

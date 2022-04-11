@@ -10,7 +10,6 @@ import java.io.*;
  * player can choose to collect in order to kill the zombie.
  */
 public class SpecialReward extends ObjectSuper {
-    GamePanel gamePanel;
 
     /**
      * Read and scale the special reward PNG file to get images of
