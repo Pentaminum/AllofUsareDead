@@ -12,8 +12,6 @@ import java.io.*;
  */
 public class UI {
     GamePanel gamePanel;
-    Font arial_40, arial_80B;
-    public BufferedImage studentImage;
     public BufferedImage heart_full,heart_half,heart_blank;
     public BufferedImage image1,image2;
     private Graphics2D graphic2D;
@@ -28,11 +26,7 @@ public class UI {
      */
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-        arial_40 = new Font("Arial", Font.PLAIN, 40);
-        arial_80B = new Font("Arial", Font.BOLD, 80);
         RegularReward student = new RegularReward(gamePanel);
-        studentImage = student.image;
-
         //Create HUD object
         ObjectSuper heart=new OBJ_Heart(gamePanel);
         heart_full = heart.image;
