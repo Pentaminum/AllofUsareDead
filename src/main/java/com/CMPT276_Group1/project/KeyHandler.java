@@ -5,7 +5,7 @@ import com.CMPT276_Group1.project.entity.*;
 import java.awt.event.*;
 
 /**
- * Our Keyhandler class to handle keyboard input
+ * Our KeyHandler class to handle keyboard input
  */
 public class KeyHandler implements KeyListener {
     public boolean upPressed,downPressed,leftPressed, rightPressed;
@@ -14,7 +14,7 @@ public class KeyHandler implements KeyListener {
     static boolean checkDrawTime=false;
 
     /**
-     * Constructor to set up a keyhandler for the given game panel
+     * Constructor to set up a KeyHandler for the given game panel
      * @param gamePanel the current game instance
      */
     public KeyHandler(GamePanel gamePanel){
@@ -22,7 +22,7 @@ public class KeyHandler implements KeyListener {
     }
 
     /**
-     * This is to override the standard keytyped method in keylistener, as we want it to do nothing
+     * This is to override the standard KeyTyped method in KeyListener, as we want it to do nothing
      * @param e the key that was pressed
      */
     @Override
