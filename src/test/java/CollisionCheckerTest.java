@@ -68,6 +68,6 @@ public class CollisionCheckerTest {
         GP.zombies[1].y=GP.tileSize;
         CC.checkZombie(GP.zombies[0],GP.zombies);
         assertTrue(GP.zombies[0].collisionOn,"asserts that zombie detect othe" +
-                "ppr zombie and have collision");
+                "r zombie and have collision");
     }
 }

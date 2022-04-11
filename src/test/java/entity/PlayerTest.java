@@ -147,7 +147,7 @@ public class PlayerTest {
         assertNull(GP.zombies[0],"asserts that zombie become null if player contact zombie with special reward");
         assertEquals(5,player.life,"asserts that player life does not change if contact zombie with special reward");
         assertEquals(0,player.hasSpecialReward,"asserts that player loss special reward once contact zombie");
-        assertEquals(1, player.zombieDefeated,"assers that player killed one zombie with special reward");
+        assertEquals(1, player.zombieDefeated,"asserts that player killed one zombie with special reward");
         assertFalse(player.invincible,"asserts that player does not turn invincible when killing zombie");
         player.contactZombie(1);
         player.invincible=false;
