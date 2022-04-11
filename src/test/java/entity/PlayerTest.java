@@ -26,14 +26,14 @@ public class PlayerTest {
 
     @Test
     public void getPlayerImageTest(){
-        BufferedImage down1 = tool.setUp("zombie_down_1",GP,player);
-        BufferedImage down2 = tool.setUp("zombie_down_2",GP,player);
-        BufferedImage left1 = tool.setUp("zombie_left_1",GP,player);
-        BufferedImage left2 = tool.setUp("zombie_left_2",GP,player);
-        BufferedImage right1 = tool.setUp("zombie_right_1",GP,player);
-        BufferedImage right2 = tool.setUp("zombie_right_2",GP,player);
-        BufferedImage up1 = tool.setUp("zombie_up_1",GP,player);
-        BufferedImage up2 = tool.setUp("zombie_up_2",GP,player);
+        BufferedImage down1 = tool.setUp("main_character_down_1",GP,player);
+        BufferedImage down2 = tool.setUp("main_character_down_2",GP,player);
+        BufferedImage left1 = tool.setUp("main_character_left_1",GP,player);
+        BufferedImage left2 = tool.setUp("main_character_left_2",GP,player);
+        BufferedImage right1 = tool.setUp("main_character_right_1",GP,player);
+        BufferedImage right2 = tool.setUp("main_character_right_2",GP,player);
+        BufferedImage up1 = tool.setUp("main_character_up_1",GP,player);
+        BufferedImage up2 = tool.setUp("main_character_up_2",GP,player);
         BufferedImage image;
         try{
 
