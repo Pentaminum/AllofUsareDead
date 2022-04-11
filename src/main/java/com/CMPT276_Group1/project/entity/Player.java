@@ -54,31 +54,14 @@ public class Player extends Entity {
      * Setting player sprite
      */
     public void getPlayerImage() {
-        up1 = setImage("main_character_up_1");
-        up2 = setImage("main_character_up_2");
-        down1 = setImage("main_character_down_1");
-        down2 = setImage("main_character_down_2");
-        left1 = setImage("main_character_left_1");
-        left2 = setImage("main_character_left_2");
-        right1 = setImage("main_character_right_1");
-        right2 = setImage("main_character_right_2");
-    }
-
-    /**
-     * Reading our png files to get the player sprite
-     * @param imageName a PNG file of the image
-     * @return the image of the specified PNG
-     */
-    public BufferedImage setImage(String imageName) {
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
-            image = tool.scaleImage(image, gamePanel.tileSize, gamePanel.tileSize);
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
-        return image;
+        up1 = tool.setUp("main_character_up_1",gamePanel,this);
+        up2 = tool.setUp("main_character_up_2",gamePanel,this);
+        down1 = tool.setUp("main_character_down_1",gamePanel,this);
+        down2 = tool.setUp("main_character_down_2",gamePanel,this);
+        left1 = tool.setUp("main_character_left_1",gamePanel,this);
+        left2 = tool.setUp("main_character_left_2",gamePanel,this);
+        right1 = tool.setUp("main_character_right_1",gamePanel,this);
+        right2 = tool.setUp("main_character_right_2",gamePanel,this);
     }
 
     /**

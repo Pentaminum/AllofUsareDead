@@ -37,34 +37,17 @@ public class Zombie extends Entity {
     }
 
     /**
-     * Read and scale the png files that can then be displayed
-     * on the screen.
-     * @param imageName a PNG file of the image
-     * @return the image of the specified PNG
-     */
-    public BufferedImage setUp(String imageName) {
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/zombie/" + imageName + ".png"));
-            image = tool.scaleImage(image, gamePanel.tileSize, gamePanel.tileSize);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
-    }
-
-    /**
      * Setting zombie sprite.
      */
     public void getImage() {
-        down1 = setUp("zombie_down_1");
-        down2 = setUp("zombie_down_2");
-        left1 = setUp("zombie_left_1");
-        left2 = setUp("zombie_left_2");
-        right1 = setUp("zombie_right_1");
-        right2 = setUp("zombie_right_2");
-        up1 = setUp("zombie_up_1");
-        up2 = setUp("zombie_up_2");
+        down1 = tool.setUp("zombie_down_1",gamePanel,this);
+        down2 = tool.setUp("zombie_down_2",gamePanel,this);
+        left1 = tool.setUp("zombie_left_1",gamePanel,this);
+        left2 = tool.setUp("zombie_left_2",gamePanel,this);
+        right1 = tool.setUp("zombie_right_1",gamePanel,this);
+        right2 = tool.setUp("zombie_right_2",gamePanel,this);
+        up1 = tool.setUp("zombie_up_1",gamePanel,this);
+        up2 = tool.setUp("zombie_up_2",gamePanel,this);
     }
 
     /**
