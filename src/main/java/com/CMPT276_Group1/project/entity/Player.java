@@ -3,10 +3,8 @@ package com.CMPT276_Group1.project.entity;
 
 import com.CMPT276_Group1.project.*;
 
-import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.*;
-import java.io.*;
 
 /**
  * Player class that handles the player and all interactions the player has with entities

@@ -1,7 +1,6 @@
 package object;
 
 import com.CMPT276_Group1.project.GamePanel;
-import com.CMPT276_Group1.project.object.SpecialReward;
 import com.CMPT276_Group1.project.object.Trap;
 import org.junit.jupiter.api.*;
 

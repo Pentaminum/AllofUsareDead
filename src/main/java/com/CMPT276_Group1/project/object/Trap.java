@@ -38,7 +38,7 @@ public class Trap extends ObjectSuper {
 
     /**
      *
-     * @param i
+     * @param i The index of the trap to be checked
      */
     public void checkEvent(int i){
         if(hit(gamePanel.traps[i].x/gamePanel.tileSize,gamePanel.traps[i].y/gamePanel.tileSize,"left")){

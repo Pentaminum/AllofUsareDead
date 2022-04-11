@@ -1,12 +1,10 @@
 import com.CMPT276_Group1.project.*;
-import com.CMPT276_Group1.project.GamePanel;
 import org.junit.jupiter.api.*;
 
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.IOException;
-import static org.junit.jupiter.api.Assertions.*;
+
 public class GamePanelTest {
     private GamePanel GP;
     private Robot R;

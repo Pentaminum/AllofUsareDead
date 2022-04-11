@@ -1,8 +1,6 @@
 import com.CMPT276_Group1.project.*;
 import org.junit.jupiter.api.*;
 
-import java.awt.event.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AssetSetterTest {
