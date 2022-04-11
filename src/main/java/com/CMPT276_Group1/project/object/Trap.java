@@ -37,8 +37,10 @@ public class Trap extends ObjectSuper {
     }
 
     /**
-     *
-     * @param i
+     * Check if the trap was hit by the player and if it did, then the trap
+     * does damage to the player and the player becomes shortly invisible
+     * @param i the index that specifies which of the 4 traps was hit
+     *          by the player
      */
     public void checkEvent(int i){
         if(hit(gamePanel.traps[i].x/gamePanel.tileSize,gamePanel.traps[i].y/gamePanel.tileSize,"left")){
@@ -52,6 +54,14 @@ public class Trap extends ObjectSuper {
         }
     }
 
+    /**
+     * Check if the trap is hit by the player
+     * @param eventCol the location of the trap on the board in columns
+     * @param eventRow the location of the trap on the board in rows
+     * @param reqDirection check which specific direction the trap is
+     *                     being hit
+     * @return return whether the trap is hit by the player or not
+     */
     public boolean hit(int eventCol, int eventRow, String reqDirection){
         boolean hit=false;
         gamePanel.player.solidArea.x=gamePanel.player.x+gamePanel.player.solidArea.x;
@@ -73,6 +83,13 @@ public class Trap extends ObjectSuper {
         return hit;
     }
 
+    /**
+     * The player will lose one life and become shortly invincible
+     * @param gameState the current game state
+     * @param i the index that specifies which of the 4 traps was hit
+     *          by the player
+     * @param direction check for the collision at a specific direction
+     */
     public void trapDamage(int gameState, int i, String direction){
         gamePanel.gameState=gameState;
         gamePanel.player.life-=1;

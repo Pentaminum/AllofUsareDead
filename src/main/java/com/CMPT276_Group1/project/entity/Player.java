@@ -76,7 +76,6 @@ public class Player extends Entity {
             image = tool.scaleImage(image, gamePanel.tileSize, gamePanel.tileSize);
         } catch (IOException e) {
             e.printStackTrace();
-
         }
         return image;
     }

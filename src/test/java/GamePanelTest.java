@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
-public class GamePanelTest {
+public class
+GamePanelTest {
     private GamePanel GP;
     private Robot R;
 
